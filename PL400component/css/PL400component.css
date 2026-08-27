@@ -1,0 +1,70 @@
+.pla-uppercase-control {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 520px;
+    padding: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 4px 14px rgb(15 23 42 / 8%);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.pla-uppercase-control__input {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-height: 110px;
+    padding: 10px 12px;
+    resize: vertical;
+    border: 1px solid #9ca3af;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #111827;
+    font: inherit;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.pla-uppercase-control__input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgb(37 99 235 / 15%);
+}
+
+.pla-uppercase-control__label {
+    display: block;
+    min-height: 20px;
+    color: #4b5563;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.pla-uppercase-control__button {
+    align-self: flex-start;
+    padding: 9px 18px;
+    border: 0;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 120ms ease, transform 80ms ease;
+}
+
+.pla-uppercase-control__button:hover {
+    background: #1d4ed8;
+}
+
+.pla-uppercase-control__button:active {
+    transform: translateY(1px);
+}
+
+.pla-uppercase-control__button:focus-visible {
+    outline: 3px solid rgb(37 99 235 / 30%);
+    outline-offset: 2px;
+}

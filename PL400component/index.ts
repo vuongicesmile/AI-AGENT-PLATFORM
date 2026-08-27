@@ -10,7 +10,8 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
     private currentTextValue: string;
     
     private myButton: HTMLButtonElement;
-    private myButtonHandler : EventListener;
+    private myButtonHandler: EventListener;
+    private isButtonUpperCase = false;
 
     /**
      * Được gọi mỗi khi người dùng nhập nội dung vào textarea.
@@ -57,9 +58,12 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
         // Lưu callback do Power Apps cung cấp để sử dụng khi người dùng nhập liệu.
         this._notifyOutputChanged = notifyOutputChanged;
         this.myMainDiv = document.createElement("div");
+        this.myMainDiv.className = "pla-uppercase-control";
 
         // Tạo textarea và gán giá trị ban đầu từ property textValue.
         this.myTextBox = document.createElement("textarea");
+        this.myTextBox.className = "pla-uppercase-control__input";
+        this.myTextBox.placeholder = "Nhập nội dung tại đây...";
         this.currentTextValue = context.parameters.textValue.raw ?? "";
         this.myTextBox.value = this.currentTextValue;
         this.myTextBox.addEventListener("input", this.handleTextInput);
@@ -67,11 +71,14 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
 
         // Tạo label để hiển thị chế độ nhập chữ hoa.
         this.myLabel = document.createElement("label");
+        this.myLabel.className = "pla-uppercase-control__label";
         this.myMainDiv.appendChild(this.myLabel);
         this.myisUpperCaseOnly = context.parameters.isUpperCaseOnly.raw ?? false;
 
-        // this create button
+        // Tạo nút chuyển đổi qua lại giữa chữ hoa và chữ thường.
         this.myButton = document.createElement("button");
+        this.myButton.className = "pla-uppercase-control__button";
+        this.myButton.type = "button";
         this.myButton.textContent = "Click me";
         this.myButtonHandler = this.myButtonClick.bind(this);
         this.myButton.addEventListener("click", this.myButtonHandler);
@@ -83,8 +90,29 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
         container.appendChild(this.myMainDiv);
     }
 
-    private myButtonClick() {
-        this.myTextBox.value = "You clicked"
+    /**
+     * Lần bấm đầu tiên chuyển nội dung thành chữ hoa.
+     * Lần bấm tiếp theo chuyển nội dung thành chữ thường, rồi tiếp tục luân phiên.
+     */
+    private myButtonClick(): void {
+        this.isButtonUpperCase = !this.isButtonUpperCase;
+
+        const currentValue = this.myTextBox.value;
+        const convertedValue = this.isButtonUpperCase
+            ? currentValue.toUpperCase()
+            : currentValue.toLowerCase();
+
+        // Cập nhật đồng thời giao diện và giá trị output của PCF control.
+        this.myTextBox.value = convertedValue;
+        this.currentTextValue = convertedValue;
+
+        // Hiển thị trạng thái hiện tại để người dùng dễ nhận biết.
+        this.myLabel.textContent = this.isButtonUpperCase
+            ? "Đang hiển thị chữ hoa"
+            : "Đang hiển thị chữ thường";
+
+        // Báo Power Apps gọi getOutputs() và nhận textValue mới.
+        this._notifyOutputChanged();
     }
 
 
@@ -102,7 +130,11 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
             ? valueFromPowerApps.toUpperCase()
             : valueFromPowerApps;
 
-        this.myTextBox.value = this.currentTextValue;
+        // Chỉ gán lại DOM khi giá trị thực sự thay đổi.
+        // Việc gán `.value` ở mọi lần updateView() sẽ làm con trỏ bị nhảy và tạo cảm giác giật/lag.
+        if (this.myTextBox.value !== this.currentTextValue) {
+            this.myTextBox.value = this.currentTextValue;
+        }
 
         // Label chỉ dùng để hiển thị trạng thái; label không phát sinh onchange.
         this.myLabel.textContent = this.myisUpperCaseOnly
@@ -130,5 +162,6 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
     public destroy(): void {
         // Gỡ event listener khi control bị hủy để tránh rò rỉ bộ nhớ.
         this.myTextBox.removeEventListener("input", this.handleTextInput);
+        this.myButton.removeEventListener("click", this.myButtonHandler);
     }
 }
