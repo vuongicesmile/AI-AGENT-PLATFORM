@@ -18,7 +18,7 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="text value" display-name-key="The text value" description-key="This is the text value" of-type="SingleLine.Text" usage="bound" required="true" />
+    <property name="textValue" display-name-key="The text value" description-key="This is the text value" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="isUpperCaseOnly" display-name-key="Use uppercase?" description-key="Does this field only accept uppercase characters?" of-type="TwoOptions" usage="bound" required="true" />
     <!--
       Property node's of-type attribute can be of-type-group attribute.
