@@ -8,6 +8,9 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
     private myLabel: HTMLLabelElement;
     private myisUpperCaseOnly: boolean;
     private currentTextValue: string;
+    
+    private myButton: HTMLButtonElement;
+    private myButtonHandler : EventListener;
 
     /**
      * Được gọi mỗi khi người dùng nhập nội dung vào textarea.
@@ -67,8 +70,21 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
         this.myMainDiv.appendChild(this.myLabel);
         this.myisUpperCaseOnly = context.parameters.isUpperCaseOnly.raw ?? false;
 
+        // this create button
+        this.myButton = document.createElement("button");
+        this.myButton.textContent = "Click me";
+        this.myButtonHandler = this.myButtonClick.bind(this);
+        this.myButton.addEventListener("click", this.myButtonHandler);
+        this.myMainDiv.appendChild(this.myButton);
+
+        
+
         // Đưa toàn bộ giao diện của control vào container do Power Apps cung cấp.
         container.appendChild(this.myMainDiv);
+    }
+
+    private myButtonClick() {
+        this.myTextBox.value = "You clicked"
     }
 
 
