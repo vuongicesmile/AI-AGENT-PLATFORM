@@ -26,9 +26,19 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
         state: ComponentFramework.Dictionary,
         container: HTMLDivElement
     ): void {
+
+       
         this._notifyOutputChanged = notifyOutputChanged;
+        //  code define téxt box
         this.myMainDiv = document.createElement("div");
         this.myTextBox = document.createElement("textarea");
+        // code define value
+        this.myTextBox.value = context.parameters.textValue.raw || "";
+
+        this.myTextBox.addEventListener("input", () => {
+            this._notifyOutputChanged();
+        });
+
         this.myMainDiv.appendChild(this.myTextBox);
         container.appendChild(this.myMainDiv);
         // Add control initialization code
@@ -41,6 +51,7 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void {
         // Add code to update control view
+        this.myTextBox.value = context.parameters.textValue.raw || "";
     }
 
     /**
@@ -48,7 +59,9 @@ export class PL400component implements ComponentFramework.StandardControl<IInput
      * @returns an object based on nomenclature defined in manifest, expecting object[s] for property marked as "bound" or "output"
      */
     public getOutputs(): IOutputs {
-        return {};
+        return {
+            textValue: this.myTextBox.value,
+        };
     }
 
     /**
