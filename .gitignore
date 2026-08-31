@@ -8,6 +8,7 @@
 
 # output directory
 /out
+/dist
 
 # msbuild output directories
 /bin
@@ -19,5 +20,20 @@
 # Visual Studio cache/options directory
 /.vs
 
-# macos
+# Python / local MCP runtime
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Local memory and credentials must never be committed
+.ai-agent-data/
+.env
+.env.*
+!.env.example
+
+# operating system files
 .DS_Store
+Thumbs.db

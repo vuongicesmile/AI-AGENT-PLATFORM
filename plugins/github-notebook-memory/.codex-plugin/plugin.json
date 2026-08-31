@@ -1,0 +1,37 @@
+{
+  "name": "github-notebook-memory",
+  "version": "0.1.0",
+  "description": "Search GitHub code and durable PC-local memory, then export or sync sources to Gemini Notebook.",
+  "author": {
+    "name": "vuongicesmile",
+    "url": "https://github.com/vuongicesmile"
+  },
+  "homepage": "https://github.com/vuongicesmile/AI-AGENT-PLATFORM/tree/main/agent_platform",
+  "repository": "https://github.com/vuongicesmile/AI-AGENT-PLATFORM",
+  "keywords": [
+    "github",
+    "gemini-notebook",
+    "notebooklm",
+    "local-memory",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "GitHub Notebook Memory",
+    "shortDescription": "GitHub knowledge with durable local memory",
+    "longDescription": "Index safe tracked files from GitHub, search and read them from SQLite on your PC, keep explicit local notes, and prepare sources for Gemini Notebook.",
+    "developerName": "vuongicesmile",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/vuongicesmile/AI-AGENT-PLATFORM",
+    "defaultPrompt": [
+      "Index my GitHub repository and explain its architecture.",
+      "Search my local repository memory for this feature.",
+      "Export the indexed repository for Gemini Notebook."
+    ],
+    "brandColor": "#24292F"
+  }
+}

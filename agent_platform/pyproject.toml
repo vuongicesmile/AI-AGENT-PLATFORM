@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "github-notebook-memory"
+version = "0.1.0"
+description = "GitHub repository extraction, Gemini Notebook sync, local SQLite memory, and an MCP server for GPT/Codex."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "mcp>=2.0.0,<3.0.0",
+]
+
+[project.scripts]
+github-notebook-memory = "github_notebook_memory.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/github_notebook_memory"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
