@@ -1,0 +1,65 @@
+{
+  "$schema": "rmit-fm-demo-blueprint/v1",
+  "artifactType": "NON_DEPLOYABLE_POWER_AUTOMATE_BLUEPRINT",
+  "name": "FM - Intake Utility File from SharePoint",
+  "solution": "RMITFM_AppsAutomation",
+  "trigger": {
+    "connector": "SharePoint Online",
+    "operation": "When a file is created (properties only)",
+    "site": "environment-variable:FM_SHAREPOINT_SITE",
+    "library": "environment-variable:FM_UTILITY_FILE_LIBRARY",
+    "folder": "environment-variable:FM_UTILITY_INBOX_FOLDER"
+  },
+  "scopes": [
+    {
+      "name": "Try - receive and validate",
+      "actions": [
+        "Create fm_ingestionrun with correlation ID and status CHECKING",
+        "Create fm_ingestionfile with SharePoint item ID, file name, size and received time",
+        "Get file metadata and content using the trigger identifier",
+        "Reject disallowed extension, oversize content, duplicate file hash or unknown active mapping",
+        "Parse the bounded file using the approved parser selected by mapping version",
+        "Validate required headers without coercing source values"
+      ]
+    },
+    {
+      "name": "Try - append Bronze",
+      "actions": [
+        "For each parsed source row, calculate the deterministic source-record hash",
+        "Upsert/create fm_bronze_utilityreadingraw or fm_bronze_utilitytariffraw with raw strings and lineage",
+        "Record duplicate observations instead of creating duplicate Bronze rows",
+        "Reconcile parsed, inserted, duplicate and rejected counts",
+        "Mark the raw run COMMITTED only when reconciliation passes"
+      ]
+    },
+    {
+      "name": "Try - request promotion",
+      "actions": [
+        "Call fm_RequestUtilityPromotion with ingestionRunId and mappingVersion",
+        "The Custom API validates the request and enqueues bounded background processing",
+        "Do not transform the whole batch synchronously inside the plug-in"
+      ]
+    },
+    {
+      "name": "Catch",
+      "runAfter": ["hasFailed", "hasTimedOut"],
+      "actions": [
+        "Keep the source file and immutable landed rows",
+        "Mark fm_ingestionrun FAILED or DEGRADED without advancing a checkpoint",
+        "Create an actionable fm_dataqualityissue with safe error detail and correlation ID",
+        "Send an email only when an approved alert rule is met"
+      ]
+    }
+  ],
+  "retries": {
+    "transientConnectorErrors": "exponential policy; exact count/duration requires operations approval",
+    "dataverse429": "honor Retry-After",
+    "businessValidation": "no automatic retry until mapping/data is corrected"
+  },
+  "constraints": [
+    "Demo blueprint only; not importable",
+    "No production URLs, IDs, credentials or connection references",
+    "Email only; no Teams notification",
+    "Maximum file/row limits require volume and licensing confirmation"
+  ]
+}

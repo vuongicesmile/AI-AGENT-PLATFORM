@@ -1,0 +1,30 @@
+# Power BI local/cache/generated data
+*.pbix
+*.pbit
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+**/.pbi/*.abf
+**/.pbi/*.json
+
+# Build/deployment output
+bin/
+obj/
+out/
+artifacts/
+*.zip
+
+# Secrets, exports and source data
+.env
+.env.*
+!.env.example
+data/
+exports/
+*.csv
+*.xlsx
+*.parquet
+
+# IDE/logs
+.vscode/
+.idea/
+*.log
+.DS_Store

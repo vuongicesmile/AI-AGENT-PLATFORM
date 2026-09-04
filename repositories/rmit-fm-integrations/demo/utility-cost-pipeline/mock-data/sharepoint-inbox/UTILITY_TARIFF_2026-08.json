@@ -1,0 +1,20 @@
+[
+  {
+    "utilityType": "ELECTRICITY",
+    "rate": 2300,
+    "currency": "VND",
+    "rateUnit": "kWh",
+    "effectiveFrom": "2026-08-01",
+    "effectiveTo": "2026-08-31",
+    "approvalStatus": "MOCK_NOT_APPROVED"
+  },
+  {
+    "utilityType": "WATER",
+    "rate": 15000,
+    "currency": "VND",
+    "rateUnit": "m3",
+    "effectiveFrom": "2026-08-01",
+    "effectiveTo": "2026-08-31",
+    "approvalStatus": "MOCK_NOT_APPROVED"
+  }
+]

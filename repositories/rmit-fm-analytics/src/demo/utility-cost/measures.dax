@@ -1,0 +1,48 @@
+// Demo measure definitions. Table/column display names are placeholders until
+// solution metadata is generated from the approved Dataverse environment.
+
+Total Utility Cost VND =
+SUM ( 'Gold Utility Daily Cost'[Cost VND] )
+
+Electricity Consumption kWh =
+CALCULATE (
+    SUM ( 'Gold Utility Daily Cost'[Consumption] ),
+    KEEPFILTERS ( 'Gold Utility Daily Cost'[Utility Type] = "ELECTRICITY" ),
+    KEEPFILTERS ( 'Gold Utility Daily Cost'[Unit] = "kWh" )
+)
+
+Water Consumption m3 =
+CALCULATE (
+    SUM ( 'Gold Utility Daily Cost'[Consumption] ),
+    KEEPFILTERS ( 'Gold Utility Daily Cost'[Utility Type] = "WATER" ),
+    KEEPFILTERS ( 'Gold Utility Daily Cost'[Unit] = "m3" )
+)
+
+Open DQ Issues =
+CALCULATE (
+    COUNTROWS ( 'Data Quality Issue' ),
+    KEEPFILTERS ( 'Data Quality Issue'[Status] = "OPEN" )
+)
+
+Last Gold As Of UTC =
+MAX ( 'Gold Utility Daily Cost'[As Of UTC] )
+
+Gold Freshness Minutes =
+VAR LastAsOf = [Last Gold As Of UTC]
+RETURN
+    IF (
+        ISBLANK ( LastAsOf ),
+        BLANK (),
+        DATEDIFF ( LastAsOf, UTCNOW (), MINUTE )
+    )
+
+Cost Formula Warning =
+IF (
+    CONTAINS (
+        VALUES ( 'Gold Utility Daily Cost'[Formula Status] ),
+        'Gold Utility Daily Cost'[Formula Status],
+        "MOCK_NOT_APPROVED"
+    ),
+    "DEMO ONLY — tariff/formula not approved",
+    BLANK ()
+)

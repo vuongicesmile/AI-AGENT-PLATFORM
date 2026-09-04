@@ -1,0 +1,87 @@
+{
+  "$schema": "rmit-fm-demo-blueprint/v1",
+  "artifactType": "NON_DEPLOYABLE_MODEL_DRIVEN_APP_BLUEPRINT",
+  "name": "FM Data Operations",
+  "solution": "RMITFM_AppsAutomation",
+  "navigation": [
+    {
+      "area": "Operations",
+      "groups": [
+        { "name": "Ingestion", "pages": ["Ingestion Runs", "Ingestion Files"] },
+        { "name": "Data Quality", "pages": ["Open DQ Issues", "Quarantine"] }
+      ]
+    },
+    {
+      "area": "Data layers",
+      "groups": [
+        { "name": "Bronze", "pages": ["Utility Reading Raw", "Utility Tariff Raw"] },
+        { "name": "Silver", "pages": ["Utility Readings", "Utility Tariffs"] },
+        { "name": "Gold", "pages": ["Daily Utility Cost"] }
+      ]
+    },
+    {
+      "area": "Configuration",
+      "groups": [
+        { "name": "Master data", "pages": ["Campuses", "Buildings", "Meters"] },
+        { "name": "Mappings", "pages": ["File Mappings", "Field Mappings", "Validation Rules"] }
+      ]
+    },
+    {
+      "area": "Analytics",
+      "groups": [
+        { "name": "Utilities", "pages": ["Embedded Power BI - Utility Cost"] }
+      ]
+    }
+  ],
+  "publicViews": [
+    {
+      "table": "fm_ingestionrun",
+      "name": "Recent Utility Ingestion Runs",
+      "columns": ["fm_correlationid", "fm_status", "fm_startedatutc", "fm_filecount", "fm_bronzecount", "fm_silvercount", "fm_goldcount", "fm_rejectedcount"]
+    },
+    {
+      "table": "fm_ingestionfile",
+      "name": "Files Requiring Review",
+      "filter": "status != SUCCEEDED",
+      "columns": ["fm_filename", "fm_sourcesystem", "fm_mappingversion", "fm_status", "fm_parsedrowcount", "fm_duplicatecount", "fm_rejectedcount"]
+    },
+    {
+      "table": "fm_bronze_utilityreadingraw",
+      "name": "Bronze Utility Rows - Read Only",
+      "columns": ["fm_sourcefilename", "fm_sourcerownumber", "fm_metercoderaw", "fm_sourcetimestampraw", "fm_sourcevalueraw", "fm_sourceunitraw", "fm_recordhash"]
+    },
+    {
+      "table": "fm_dataqualityissue",
+      "name": "Open Utility DQ Issues",
+      "filter": "status = OPEN",
+      "columns": ["fm_layer", "fm_rulecode", "fm_severity", "fm_meter", "fm_recordhash", "fm_details", "fm_owner", "fm_status"]
+    },
+    {
+      "table": "fm_gold_utilitydailycost",
+      "name": "Daily Utility Cost",
+      "columns": ["fm_localdate", "fm_campus", "fm_building", "fm_meter", "fm_utilitytype", "fm_consumption", "fm_unit", "fm_rate", "fm_currency", "fm_cost", "fm_formulastatus"]
+    }
+  ],
+  "forms": [
+    {
+      "table": "fm_ingestionrun",
+      "name": "Utility Ingestion Run Review",
+      "tabs": ["Summary and control counts", "Files", "Data-quality issues", "Promotion history"]
+    },
+    {
+      "table": "fm_dataqualityissue",
+      "name": "DQ Triage",
+      "tabs": ["Issue", "Source lineage", "Resolution and immutable history"]
+    }
+  ],
+  "commands": [
+    "Replay bounded run - security role and server validation required",
+    "Resolve DQ issue - requires comment and immutable audit event",
+    "Open source file - use protected SharePoint link and authorized user context"
+  ],
+  "securityNotes": [
+    "Bronze views are read-only for normal users; Update/Delete blocked server-side",
+    "Access must be enforced in Dataverse and the semantic model, not by navigation visibility",
+    "Actual roles and business-unit depth require security design approval"
+  ]
+}

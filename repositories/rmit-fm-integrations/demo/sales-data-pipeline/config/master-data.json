@@ -1,0 +1,21 @@
+{
+  "customers": [
+    { "customerCode": "C001", "customerName": "ABC Ltd", "isActive": true },
+    { "customerCode": "C002", "customerName": "XYZ Ltd", "isActive": true },
+    { "customerCode": "C003", "customerName": "Delta Co", "isActive": true },
+    { "customerCode": "C004", "customerName": "Nova Ltd", "isActive": true },
+    { "customerCode": "C005", "customerName": "Acme Inc", "isActive": true },
+    { "customerCode": "C006", "customerName": "Beta Corp", "isActive": true }
+  ],
+  "products": [
+    { "productCode": "P001", "productName": "Laptop", "costPerUnit": 700, "isActive": true },
+    { "productCode": "P002", "productName": "Monitor", "costPerUnit": 300, "isActive": true },
+    { "productCode": "P003", "productName": "Mouse", "costPerUnit": 10, "isActive": true },
+    { "productCode": "P004", "productName": "Keyboard", "costPerUnit": 40, "isActive": true },
+    { "productCode": "P005", "productName": "Docking Station", "costPerUnit": 120, "isActive": true },
+    { "productCode": "P006", "productName": "Webcam", "costPerUnit": 45, "isActive": true },
+    { "productCode": "P007", "productName": "Headset", "costPerUnit": 70, "isActive": true },
+    { "productCode": "P008", "productName": "USB-C Cable", "costPerUnit": 5, "isActive": true },
+    { "productCode": "P009", "productName": "SSD", "costPerUnit": 90, "isActive": true }
+  ]
+}

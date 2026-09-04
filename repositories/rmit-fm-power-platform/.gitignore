@@ -1,0 +1,29 @@
+# Power Platform authentication and local environment data
+.env
+.env.*
+!.env.example
+authProfiles.json
+*.pfx
+*.snk
+*.cer
+*.key
+
+# Generated solution packages and build output
+*.zip
+bin/
+obj/
+out/
+artifacts/
+
+# Local logs and editor files
+*.log
+.vs/
+.vscode/
+.idea/
+.DS_Store
+
+# Never commit local or production data extracts
+data/
+exports/
+*.bacpac
+*.bak

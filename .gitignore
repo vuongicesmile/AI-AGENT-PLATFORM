@@ -1,0 +1,13 @@
+.env
+.venv/
+.dataverse/
+.token_cache.bin
+.mcp.json
+.vscode/settings.json
+.claude/mcp_settings.json
+*.snk
+__pycache__/
+*.pyc
+solutions/*.zip
+plugins/**/bin/
+plugins/**/obj/

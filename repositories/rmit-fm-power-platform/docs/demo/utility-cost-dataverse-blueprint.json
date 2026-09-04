@@ -1,0 +1,294 @@
+{
+  "$schema": "rmit-fm-demo-blueprint/v1",
+  "artifactType": "NON_DEPLOYABLE_DATAVERSE_BLUEPRINT",
+  "solution": "RMITFM_DataModel",
+  "publisherPrefix": "UNRESOLVED_USE_PROJECT_PREFIX_AFTER_APPROVAL",
+  "tables": [
+    {
+      "logicalName": "fm_campus",
+      "purpose": "Canonical campus dimension",
+      "alternateKeys": [["fm_campuscode"]],
+      "columns": {
+        "fm_campusid": "Unique identifier",
+        "fm_campuscode": "Text required",
+        "fm_name": "Text required",
+        "fm_isactive": "Yes/No required"
+      }
+    },
+    {
+      "logicalName": "fm_building",
+      "purpose": "Canonical building dimension",
+      "alternateKeys": [["fm_campus", "fm_buildingcode"]],
+      "columns": {
+        "fm_buildingid": "Unique identifier",
+        "fm_buildingcode": "Text required",
+        "fm_name": "Text required",
+        "fm_campus": "Lookup fm_campus required",
+        "fm_isactive": "Yes/No required"
+      }
+    },
+    {
+      "logicalName": "fm_meter",
+      "purpose": "Authorized electricity/water meter master",
+      "alternateKeys": [["fm_metercode"]],
+      "columns": {
+        "fm_meterid": "Unique identifier",
+        "fm_metercode": "Text required",
+        "fm_building": "Lookup fm_building required",
+        "fm_utilitytype": "Choice required: ELECTRICITY, WATER",
+        "fm_metriccode": "Text required",
+        "fm_canonicalunit": "Text required",
+        "fm_maxintervalconsumption": "Decimal optional",
+        "fm_isactive": "Yes/No required"
+      }
+    },
+    {
+      "logicalName": "fm_ingestionrun",
+      "purpose": "One auditable file batch and promotion boundary",
+      "alternateKeys": [["fm_correlationid"]],
+      "columns": {
+        "fm_ingestionrunid": "Unique identifier",
+        "fm_correlationid": "Text required",
+        "fm_status": "Choice required",
+        "fm_mappingversion": "Text required",
+        "fm_startedatutc": "DateTime user independent required",
+        "fm_completedatutc": "DateTime user independent optional",
+        "fm_filecount": "Whole number",
+        "fm_inputcount": "Whole number",
+        "fm_bronzecount": "Whole number",
+        "fm_duplicatecount": "Whole number",
+        "fm_silvercount": "Whole number",
+        "fm_rejectedcount": "Whole number",
+        "fm_goldcount": "Whole number"
+      }
+    },
+    {
+      "logicalName": "fm_ingestionfile",
+      "purpose": "SharePoint file identity, control counts and protected content reference",
+      "alternateKeys": [["fm_sourcecontainer", "fm_filehash"]],
+      "columns": {
+        "fm_ingestionfileid": "Unique identifier",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_filename": "Text required",
+        "fm_sourcecontainer": "Text required",
+        "fm_sharepointitemid": "Text required",
+        "fm_contentreference": "URL or text required; access controlled",
+        "fm_filehash": "Text 64 required",
+        "fm_bytecount": "Whole number required",
+        "fm_sourcesystem": "Text required",
+        "fm_mappingversion": "Text required",
+        "fm_status": "Choice required",
+        "fm_parsedrowcount": "Whole number",
+        "fm_bronzecount": "Whole number",
+        "fm_duplicatecount": "Whole number",
+        "fm_rejectedcount": "Whole number",
+        "fm_receivedatutc": "DateTime user independent required"
+      }
+    },
+    {
+      "logicalName": "fm_bronze_utilityreadingraw",
+      "purpose": "Immutable source-shaped electricity/water row",
+      "alternateKeys": [["fm_recordhash"]],
+      "columns": {
+        "fm_bronzeutilityreadingrawid": "Unique identifier",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_ingestionfile": "Lookup fm_ingestionfile required",
+        "fm_sourcesystem": "Text required",
+        "fm_source": "Choice required: automated, manual",
+        "fm_sourcefilename": "Text required",
+        "fm_sourcefilehash": "Text 64 required",
+        "fm_sourcerownumber": "Whole number required",
+        "fm_metercoderaw": "Text optional",
+        "fm_metriccoderaw": "Text optional",
+        "fm_sourcetimestampraw": "Multiline text optional",
+        "fm_sourcevalueraw": "Multiline text optional",
+        "fm_sourceunitraw": "Text optional",
+        "fm_sourcequalityraw": "Text optional",
+        "fm_submittedbyraw": "Text optional",
+        "fm_rawpayload": "Multiline text required",
+        "fm_recordhash": "Text 64 required",
+        "fm_mappingversion": "Text required",
+        "fm_ingestedatutc": "DateTime user independent required"
+      },
+      "serverRules": [
+        "Create requires run, file, row, raw payload, mapping version, hash and ingestion timestamp",
+        "Update and Delete denied outside an approved correction/reload procedure",
+        "Writer identity restricted by Dataverse security role/service account"
+      ]
+    },
+    {
+      "logicalName": "fm_bronze_utilitytariffraw",
+      "purpose": "Immutable source-shaped tariff reference row",
+      "alternateKeys": [["fm_recordhash"]],
+      "columns": {
+        "fm_bronzeutilitytariffrawid": "Unique identifier",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_ingestionfile": "Lookup fm_ingestionfile required",
+        "fm_utilitytyperaw": "Text optional",
+        "fm_rateraw": "Multiline text optional",
+        "fm_currencyraw": "Text optional",
+        "fm_rateunitraw": "Text optional",
+        "fm_effectivefromraw": "Text optional",
+        "fm_effectivetoraw": "Text optional",
+        "fm_approvalstatusraw": "Text optional",
+        "fm_rawpayload": "Multiline text required",
+        "fm_recordhash": "Text 64 required",
+        "fm_mappingversion": "Text required",
+        "fm_ingestedatutc": "DateTime user independent required"
+      }
+    },
+    {
+      "logicalName": "fm_silver_utilityreading",
+      "purpose": "Typed, related and quality-scored utility reading",
+      "alternateKeys": [["fm_meter", "fm_metriccode", "fm_eventatutc", "fm_recordhash"]],
+      "columns": {
+        "fm_silverutilityreadingid": "Unique identifier",
+        "fm_bronzerow": "Lookup fm_bronze_utilityreadingraw required",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_meter": "Lookup fm_meter required",
+        "fm_metriccode": "Text required",
+        "fm_eventatutc": "DateTime user independent required",
+        "fm_sourcetimestamp": "Text required",
+        "fm_sourceoffset": "Text required",
+        "fm_sourcelocaldate": "Date only required",
+        "fm_cumulativevalue": "Decimal required",
+        "fm_intervalconsumption": "Decimal optional",
+        "fm_intervalminutes": "Decimal optional",
+        "fm_normalizedunit": "Text required",
+        "fm_qualitystate": "Choice required: VALID, SUSPECT",
+        "fm_qualityflags": "Multiline text optional",
+        "fm_source": "Choice required: automated, manual",
+        "fm_recordhash": "Text 64 required"
+      }
+    },
+    {
+      "logicalName": "fm_silver_utilitytariff",
+      "purpose": "Typed effective-dated reference; owner approval required",
+      "alternateKeys": [["fm_utilitytype", "fm_rateunit", "fm_effectivefrom"]],
+      "columns": {
+        "fm_silverutilitytariffid": "Unique identifier",
+        "fm_bronzerow": "Lookup fm_bronze_utilitytariffraw required",
+        "fm_utilitytype": "Choice required: ELECTRICITY, WATER",
+        "fm_rate": "Decimal required",
+        "fm_currency": "Text required",
+        "fm_rateunit": "Text required",
+        "fm_effectivefrom": "Date only required",
+        "fm_effectiveto": "Date only required",
+        "fm_approvalstatus": "Choice required",
+        "fm_recordhash": "Text 64 required"
+      }
+    },
+    {
+      "logicalName": "fm_utilityreadingquarantine",
+      "purpose": "Queryable rejected reading linked back to immutable Bronze",
+      "alternateKeys": [["fm_bronzerow", "fm_rulecode"]],
+      "columns": {
+        "fm_utilityreadingquarantineid": "Unique identifier",
+        "fm_bronzerow": "Lookup fm_bronze_utilityreadingraw required",
+        "fm_rulecode": "Text required",
+        "fm_reason": "Multiline text required",
+        "fm_status": "Choice required",
+        "fm_quarantinedatutc": "DateTime user independent required"
+      }
+    },
+    {
+      "logicalName": "fm_dataqualityissue",
+      "purpose": "Actionable file, Bronze, Silver or Gold observation",
+      "alternateKeys": [["fm_recordhash", "fm_rulecode"]],
+      "columns": {
+        "fm_dataqualityissueid": "Unique identifier",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_ingestionfile": "Lookup fm_ingestionfile optional",
+        "fm_bronzerow": "Lookup fm_bronze_utilityreadingraw optional",
+        "fm_meter": "Lookup fm_meter optional",
+        "fm_layer": "Choice required: FILE, BRONZE, SILVER, GOLD",
+        "fm_rulecode": "Text required",
+        "fm_severity": "Choice required: INFO, WARNING, ERROR, CRITICAL",
+        "fm_recordhash": "Text 64 optional",
+        "fm_details": "Multiline text required",
+        "fm_status": "Choice required",
+        "fm_owner": "Owner",
+        "fm_detectedatutc": "DateTime user independent required",
+        "fm_resolutioncomment": "Multiline text optional"
+      }
+    },
+    {
+      "logicalName": "fm_gold_utilitydailycost",
+      "purpose": "Power BI serving row at meter by local date grain",
+      "alternateKeys": [["fm_meter", "fm_localdate", "fm_formulaversion"]],
+      "columns": {
+        "fm_goldutilitydailycostid": "Unique identifier",
+        "fm_meter": "Lookup fm_meter required",
+        "fm_campus": "Lookup fm_campus required",
+        "fm_building": "Lookup fm_building required",
+        "fm_localdate": "Date only required",
+        "fm_utilitytype": "Choice required",
+        "fm_consumption": "Decimal required",
+        "fm_unit": "Text required",
+        "fm_tariff": "Lookup fm_silver_utilitytariff required",
+        "fm_rate": "Decimal required",
+        "fm_currency": "Text required",
+        "fm_cost": "Currency or decimal required; decision pending",
+        "fm_validintervalcount": "Whole number required",
+        "fm_sourcerowcount": "Whole number required",
+        "fm_formulaversion": "Text required",
+        "fm_formulastatus": "Choice required",
+        "fm_asofutc": "DateTime user independent required",
+        "fm_datafreshnessminutes": "Decimal optional"
+      }
+    },
+    {
+      "logicalName": "fm_promotionrequest",
+      "purpose": "Bounded asynchronous request created by the Custom API",
+      "alternateKeys": [["fm_ingestionrun", "fm_mappingversion"]],
+      "columns": {
+        "fm_promotionrequestid": "Unique identifier",
+        "fm_ingestionrun": "Lookup fm_ingestionrun required",
+        "fm_mappingversion": "Text required",
+        "fm_status": "Choice required",
+        "fm_requestedby": "Lookup systemuser/application user required",
+        "fm_requestedatutc": "DateTime user independent required",
+        "fm_startedatutc": "DateTime user independent optional",
+        "fm_completedatutc": "DateTime user independent optional",
+        "fm_resultsummary": "Multiline text optional"
+      }
+    }
+  ],
+  "relationships": [
+    "fm_campus 1:N fm_building",
+    "fm_building 1:N fm_meter",
+    "fm_ingestionrun 1:N fm_ingestionfile",
+    "fm_ingestionrun 1:N fm_bronze_utilityreadingraw",
+    "fm_ingestionfile 1:N fm_bronze_utilityreadingraw",
+    "fm_bronze_utilityreadingraw 1:0..1 fm_silver_utilityreading",
+    "fm_bronze_utilityreadingraw 1:N fm_dataqualityissue",
+    "fm_bronze_utilityreadingraw 1:N fm_utilityreadingquarantine",
+    "fm_meter 1:N fm_silver_utilityreading",
+    "fm_meter 1:N fm_gold_utilitydailycost",
+    "fm_silver_utilitytariff 1:N fm_gold_utilitydailycost",
+    "fm_ingestionrun 1:N fm_promotionrequest"
+  ],
+  "serverExtensions": [
+    {
+      "name": "BronzeRawWriteGuard",
+      "messages": ["Create", "Update", "Delete"],
+      "responsibility": "Validate required lineage and permitted writer on Create; reject Update/Delete",
+      "nonResponsibility": "No batch parsing or Bronze-to-Silver transformation"
+    },
+    {
+      "name": "fm_RequestUtilityPromotion",
+      "type": "Custom API",
+      "inputs": ["ingestionRunId", "mappingVersion"],
+      "outputs": ["promotionRequestId", "status"],
+      "responsibility": "Validate committed run and create one idempotent promotion request",
+      "nonResponsibility": "No synchronous bulk transformation"
+    }
+  ],
+  "unresolved": [
+    "Approved Publisher prefix and physical logical names",
+    "Ownership type, auditing, retention, capacity and indexing per table",
+    "Currency versus decimal behavior for multi-currency cost",
+    "Production security roles and business-unit depth",
+    "Correction/reload and meter-reset authorization path"
+  ]
+}

@@ -1,0 +1,28 @@
+schemaVersion: 1
+release: unassigned
+status: scaffold
+components:
+  - repository: rmit-fm-power-platform
+    artifact: RMITFM_DataModel
+    version: unassigned
+    commit: unassigned
+  - repository: rmit-fm-dataverse-plugins
+    artifact: RMITFM_ServerExtensions
+    version: unassigned
+    commit: unassigned
+  - repository: rmit-fm-pcf-components
+    artifact: RMITFM_UIComponents
+    version: unassigned
+    commit: unassigned
+  - repository: rmit-fm-power-platform
+    artifact: RMITFM_AppsAutomation
+    version: unassigned
+    commit: unassigned
+  - repository: rmit-fm-integrations
+    artifact: integration-runtime
+    version: unassigned
+    commit: unassigned
+  - repository: rmit-fm-analytics
+    artifact: power-bi-project
+    version: unassigned
+    commit: unassigned

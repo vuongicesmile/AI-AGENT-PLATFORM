@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>RMIT FM Utility Cost Pipeline Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Demo navigation">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">FM</span>
+          <div>
+            <strong>Utility ledger</strong>
+            <span>Local proof of concept</span>
+          </div>
+        </div>
+
+        <nav>
+          <a class="nav-item active" href="#overview"><span>01</span> Pipeline overview</a>
+          <a class="nav-item" href="#files"><span>02</span> File intake</a>
+          <a class="nav-item" href="#data-review"><span>03</span> Layer review</a>
+          <a class="nav-item" href="#cost"><span>04</span> Cost serving</a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="eyebrow">Boundary</span>
+          <p>No tenant connection. No Dataverse write. Every identity, reading and tariff is synthetic.</p>
+        </div>
+      </aside>
+
+      <main id="main-content">
+        <header class="topbar" id="overview">
+          <div>
+            <p class="eyebrow">Saigon South Campus · utility operations</p>
+            <h1>Turn file drops into an auditable cost ledger.</h1>
+          </div>
+          <div class="run-controls">
+            <span class="environment-badge">DEMO / MOCK</span>
+            <button id="replay-button" type="button">Replay pipeline</button>
+          </div>
+        </header>
+
+        <p id="run-status" class="run-status" role="status" aria-live="polite">Loading the synthetic SharePoint inbox…</p>
+
+        <section class="flow-spine" aria-labelledby="flow-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Run lineage</p>
+              <h2 id="flow-title">One batch, five controlled boundaries</h2>
+            </div>
+            <code id="run-id">RUN—</code>
+          </div>
+          <ol class="flow-stages">
+            <li class="stage sharepoint">
+              <span class="stage-number">01</span>
+              <strong>SharePoint inbox</strong>
+              <b id="stage-files">—</b>
+              <small>files checked</small>
+            </li>
+            <li class="stage parse">
+              <span class="stage-number">02</span>
+              <strong>Cloud parse</strong>
+              <b id="stage-input">—</b>
+              <small>input rows</small>
+            </li>
+            <li class="stage bronze">
+              <span class="stage-number">03</span>
+              <strong>Bronze</strong>
+              <b id="stage-bronze">—</b>
+              <small>unique raw rows</small>
+            </li>
+            <li class="stage silver">
+              <span class="stage-number">04</span>
+              <strong>Silver</strong>
+              <b id="stage-silver">—</b>
+              <small>mapped readings</small>
+            </li>
+            <li class="stage gold">
+              <span class="stage-number">05</span>
+              <strong>Gold</strong>
+              <b id="stage-gold">—</b>
+              <small>daily cost rows</small>
+            </li>
+          </ol>
+        </section>
+
+        <section class="metric-grid" aria-label="Run summary">
+          <article class="metric primary-metric">
+            <span>Illustrative utility cost</span>
+            <strong id="total-cost">—</strong>
+            <small>Gold rows only · mock tariff</small>
+          </article>
+          <article class="metric electricity-metric">
+            <span>Electricity accepted</span>
+            <strong id="total-electricity">—</strong>
+            <small>VALID intervals only</small>
+          </article>
+          <article class="metric water-metric">
+            <span>Water accepted</span>
+            <strong id="total-water">—</strong>
+            <small>automated + manual meters</small>
+          </article>
+          <article class="metric dq-metric">
+            <span>Open DQ observations</span>
+            <strong id="total-dq">—</strong>
+            <small>duplicates, rejects and gaps</small>
+          </article>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="panel file-panel" id="files" aria-labelledby="file-title">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Cloud Flow handoff</p>
+                <h2 id="file-title">Files received</h2>
+              </div>
+              <span id="file-success-rate" class="subtle-badge">—</span>
+            </div>
+            <div id="file-list" class="file-list"></div>
+          </section>
+
+          <section class="panel cost-panel" id="cost" aria-labelledby="cost-title">
+            <div class="section-heading compact">
+              <div>
+                <p class="eyebrow">Power BI serving shape</p>
+                <h2 id="cost-title">Accepted daily cost</h2>
+              </div>
+              <span class="warning-badge">MOCK RATE</span>
+            </div>
+            <div id="cost-bars" class="cost-bars"></div>
+            <div id="cost-table" class="compact-table"></div>
+          </section>
+        </div>
+
+        <section class="panel review-panel" id="data-review" aria-labelledby="review-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Model-driven App review surface</p>
+              <h2 id="review-title">Inspect lineage before promotion</h2>
+            </div>
+            <p class="review-note">Rows are synthetic. Bronze is immutable in the target design.</p>
+          </div>
+
+          <div class="tab-list" role="tablist" aria-label="Pipeline data views">
+            <button id="tab-bronze" role="tab" aria-selected="true" aria-controls="records-table" data-tab="bronze">Bronze raw</button>
+            <button id="tab-silver" role="tab" aria-selected="false" aria-controls="records-table" data-tab="silver">Silver mapped</button>
+            <button id="tab-gold" role="tab" aria-selected="false" aria-controls="records-table" data-tab="gold">Gold cost</button>
+            <button id="tab-dq" role="tab" aria-selected="false" aria-controls="records-table" data-tab="dq">DQ queue</button>
+            <button id="tab-mapping" role="tab" aria-selected="false" aria-controls="records-table" data-tab="mapping">Field mappings</button>
+          </div>
+
+          <div id="records-table" role="tabpanel" aria-labelledby="tab-bronze" tabindex="0"></div>
+        </section>
+
+        <section class="reconciliation-strip" aria-labelledby="recon-title">
+          <div>
+            <p class="eyebrow">Control total</p>
+            <h2 id="recon-title">Reconciliation is visible, not implied.</h2>
+          </div>
+          <p id="reconciliation-note">—</p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7C3B1306-87A4-47F1-987B-6E8C8701AC64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rmit.Fm.Dataverse.Plugins", "src\Rmit.Fm.Dataverse.Plugins\Rmit.Fm.Dataverse.Plugins.csproj", "{A67FEC76-66D8-4347-8A8B-62D87C356038}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A4C15725-C2B3-4563-8F46-F10A327AB3C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rmit.Fm.Dataverse.Plugins.UnitTests", "tests\Rmit.Fm.Dataverse.Plugins.UnitTests\Rmit.Fm.Dataverse.Plugins.UnitTests.csproj", "{9E9AF10E-4F45-4684-BA20-288DB52AE1B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A67FEC76-66D8-4347-8A8B-62D87C356038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A67FEC76-66D8-4347-8A8B-62D87C356038}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A67FEC76-66D8-4347-8A8B-62D87C356038}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A67FEC76-66D8-4347-8A8B-62D87C356038}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E9AF10E-4F45-4684-BA20-288DB52AE1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E9AF10E-4F45-4684-BA20-288DB52AE1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E9AF10E-4F45-4684-BA20-288DB52AE1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E9AF10E-4F45-4684-BA20-288DB52AE1B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A67FEC76-66D8-4347-8A8B-62D87C356038} = {7C3B1306-87A4-47F1-987B-6E8C8701AC64}
+		{9E9AF10E-4F45-4684-BA20-288DB52AE1B1} = {A4C15725-C2B3-4563-8F46-F10A327AB3C7}
+	EndGlobalSection
+EndGlobal

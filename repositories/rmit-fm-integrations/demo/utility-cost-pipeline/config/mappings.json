@@ -1,0 +1,84 @@
+{
+  "version": "demo-1.0",
+  "maxFileBytes": 1048576,
+  "allowedExtensions": [".csv", ".json"],
+  "fileMappings": [
+    {
+      "id": "pme-electricity-cumulative-v1",
+      "fileNamePattern": "^PME_ELECTRICITY_.*\\.csv$",
+      "format": "csv",
+      "sourceSystem": "PME",
+      "recordType": "utility_reading",
+      "targetBronzeTable": "fm_bronze_utilityreadingraw",
+      "targetSilverTable": "fm_silver_utilityreading",
+      "measurementKind": "cumulative",
+      "metricCode": "ELECTRICITY_CONSUMPTION",
+      "expectedIntervalMinutes": 60,
+      "fields": {
+        "sourceTimestamp": "Timestamp",
+        "meterCode": "Meter",
+        "sourceValue": "Reading",
+        "sourceUnit": "Unit",
+        "sourceQuality": "Quality"
+      }
+    },
+    {
+      "id": "bms-water-cumulative-v1",
+      "fileNamePattern": "^BMS_WATER_.*\\.csv$",
+      "format": "csv",
+      "sourceSystem": "BMS",
+      "recordType": "utility_reading",
+      "targetBronzeTable": "fm_bronze_utilityreadingraw",
+      "targetSilverTable": "fm_silver_utilityreading",
+      "measurementKind": "cumulative",
+      "metricCode": "WATER_CONSUMPTION",
+      "expectedIntervalMinutes": 60,
+      "fields": {
+        "sourceTimestamp": "sample_time",
+        "meterCode": "point_name",
+        "sourceValue": "total_value",
+        "sourceUnit": "uom",
+        "sourceQuality": "status"
+      }
+    },
+    {
+      "id": "manual-water-cumulative-v1",
+      "fileNamePattern": "^MANUAL_WATER_.*\\.csv$",
+      "format": "csv",
+      "sourceSystem": "MANUAL_UPLOAD",
+      "recordType": "utility_reading",
+      "targetBronzeTable": "fm_bronze_utilityreadingraw",
+      "targetSilverTable": "fm_silver_utilityreading",
+      "measurementKind": "cumulative",
+      "metricCode": "WATER_CONSUMPTION",
+      "source": "manual",
+      "expectedIntervalMinutes": 1440,
+      "fields": {
+        "sourceTimestamp": "reading_time",
+        "meterCode": "asset_id",
+        "sourceValue": "reading_value",
+        "sourceUnit": "reading_unit",
+        "sourceQuality": "quality",
+        "submittedBy": "operator"
+      }
+    },
+    {
+      "id": "utility-tariff-v1",
+      "fileNamePattern": "^UTILITY_TARIFF_.*\\.json$",
+      "format": "json",
+      "sourceSystem": "DEMO_REFERENCE",
+      "recordType": "utility_tariff",
+      "targetBronzeTable": "fm_bronze_utilitytariffraw",
+      "targetSilverTable": "fm_silver_utilitytariff",
+      "fields": {
+        "utilityType": "utilityType",
+        "rate": "rate",
+        "currency": "currency",
+        "rateUnit": "rateUnit",
+        "effectiveFrom": "effectiveFrom",
+        "effectiveTo": "effectiveTo",
+        "approvalStatus": "approvalStatus"
+      }
+    }
+  ]
+}

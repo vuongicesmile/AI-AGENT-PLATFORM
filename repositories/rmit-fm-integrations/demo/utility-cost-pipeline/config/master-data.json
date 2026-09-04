@@ -1,0 +1,55 @@
+{
+  "campuses": [
+    {
+      "campusId": "CAMPUS-SGS",
+      "campusCode": "SGS",
+      "name": "Saigon South Campus"
+    }
+  ],
+  "buildings": [
+    {
+      "buildingId": "BUILDING-AB2",
+      "buildingCode": "AB2",
+      "campusId": "CAMPUS-SGS",
+      "name": "Academic Building 2"
+    },
+    {
+      "buildingId": "BUILDING-D1",
+      "buildingCode": "D1",
+      "campusId": "CAMPUS-SGS",
+      "name": "D1 Utilities Area"
+    }
+  ],
+  "meters": [
+    {
+      "meterId": "METER-EL-AB2-01",
+      "meterCode": "EL-AB2-MAIN",
+      "buildingId": "BUILDING-AB2",
+      "utilityType": "ELECTRICITY",
+      "metricCode": "ELECTRICITY_CONSUMPTION",
+      "canonicalUnit": "kWh",
+      "isActive": true,
+      "maxIntervalConsumption": 100
+    },
+    {
+      "meterId": "METER-WA-AB2-01",
+      "meterCode": "WA-AB2-MAIN",
+      "buildingId": "BUILDING-AB2",
+      "utilityType": "WATER",
+      "metricCode": "WATER_CONSUMPTION",
+      "canonicalUnit": "m3",
+      "isActive": true,
+      "maxIntervalConsumption": 5
+    },
+    {
+      "meterId": "METER-WA-D1-01",
+      "meterCode": "WA-D1-MANUAL-01",
+      "buildingId": "BUILDING-D1",
+      "utilityType": "WATER",
+      "metricCode": "WATER_CONSUMPTION",
+      "canonicalUnit": "m3",
+      "isActive": true,
+      "maxIntervalConsumption": 10
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# Node/PCF generated content
+node_modules/
+**/generated/
+out/
+**/out/
+bin/
+obj/
+coverage/
+dist/
+
+# Generated packages
+*.zip
+*.tgz
+
+# Secrets and local Power Platform authentication
+.env
+.env.*
+!.env.example
+authProfiles.json
+*.pfx
+*.snk
+*.key
+
+# IDE and logs
+.vs/
+.vscode/
+.idea/
+*.log
+.DS_Store

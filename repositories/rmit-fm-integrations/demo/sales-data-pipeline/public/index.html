@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" light>
+    <title>Sales Data Pipeline Demo</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Demo navigation">
+        <div class="brand-lockup">
+          <span class="brand-mark" aria-hidden="true">SD</span>
+          <div>
+            <strong>Sales pipeline</strong>
+            <span>Local proof of concept</span>
+          </div>
+        </div>
+        <nav>
+          <a class="nav-item active" href="#overview"><span>01</span> Overview</a>
+          <a class="nav-item" href="#layers"><span>02</span> Medallion layers</a>
+          <a class="nav-item" href="#errors"><span>03</span> Errors</a>
+        </nav>
+        <div class="sidebar-note">
+          <span class="eyebrow">Boundary</span>
+          <p>No Google Drive, Dataverse, or Power BI connection. Synthetic CSV only.</p>
+        </div>
+      </aside>
+
+      <main id="main-content">
+        <header class="topbar" id="overview">
+          <div>
+            <p class="eyebrow">plan.md · Sales_YYYY_MM.csv MVP</p>
+            <h1>Google Drive URL → Bronze → Silver → Gold.</h1>
+          </div>
+          <div class="run-controls">
+            <span class="environment-badge">DEMO / MOCK</span>
+            <button id="replay-button" type="button">Replay pipeline</button>
+          </div>
+        </header>
+
+        <p id="run-status" class="run-status" role="status" aria-live="polite">Loading mock Google Drive inbox…</p>
+
+        <section class="kpi-grid" aria-label="Run counts">
+          <article class="kpi"><span>Bronze</span><strong id="kpi-bronze">—</strong></article>
+          <article class="kpi"><span>Silver valid</span><strong id="kpi-silver">—</strong></article>
+          <article class="kpi"><span>Gold</span><strong id="kpi-gold">—</strong></article>
+          <article class="kpi"><span>Errors</span><strong id="kpi-errors">—</strong></article>
+        </section>
+
+        <section class="flow-spine" aria-labelledby="flow-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Run lineage</p>
+              <h2 id="flow-title">Intake through Custom API Gold</h2>
+            </div>
+            <code id="run-id">RUN—</code>
+          </div>
+          <ol class="flow-stages">
+            <li class="stage"><span>01</span><strong>Google Drive</strong><small id="stage-file">—</small></li>
+            <li class="stage"><span>02</span><strong>DataSource</strong><small id="stage-ds">—</small></li>
+            <li class="stage bronze"><span>03</span><strong>Sales_Bronze</strong><small id="stage-bronze">—</small></li>
+            <li class="stage silver"><span>04</span><strong>Sales_Silver</strong><small id="stage-silver">—</small></li>
+            <li class="stage gold"><span>05</span><strong>Sales_Gold</strong><small id="stage-gold">—</small></li>
+          </ol>
+        </section>
+
+        <section id="layers" class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Layer review</p>
+              <h2>Inspect Bronze, Silver, and Gold</h2>
+            </div>
+            <div class="tab-row" role="tablist">
+              <button type="button" class="tab active" data-tab="bronze" role="tab">Bronze</button>
+              <button type="button" class="tab" data-tab="silver" role="tab">Silver</button>
+              <button type="button" class="tab" data-tab="gold" role="tab">Gold</button>
+            </div>
+          </div>
+          <div id="records-table"></div>
+        </section>
+
+        <section id="errors" class="panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Audit</p>
+              <h2>PipelineError</h2>
+            </div>
+          </div>
+          <div id="errors-table"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

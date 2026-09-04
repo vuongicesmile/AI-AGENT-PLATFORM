@@ -1,0 +1,3 @@
+Order ID,Date,Customer Code,Customer,Product Code,Product,Qty,Unit Price,Discount,Currency
+SO201,01/08/2026,C001,ABC Ltd,P001,Laptop,2,1000,5%,USD
+SO201,02/08/2026,C002,XYZ Ltd,P002,Monitor,1,500,0%,USD

@@ -1,0 +1,32 @@
+# .NET/MSBuild output
+bin/
+obj/
+artifacts/
+TestResults/
+*.trx
+*.nupkg
+*.snupkg
+
+# Signing material and secrets
+*.pfx
+*.snk
+*.cer
+*.key
+.env
+.env.*
+!.env.example
+authProfiles.json
+appsettings.*.local.json
+
+# Generated deployment packages
+*.zip
+out/
+
+# IDE and local tooling
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.log
+.DS_Store

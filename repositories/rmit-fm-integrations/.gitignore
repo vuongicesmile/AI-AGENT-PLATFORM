@@ -1,0 +1,36 @@
+# .NET build/test output
+bin/
+obj/
+artifacts/
+TestResults/
+coverage/
+*.trx
+*.nupkg
+*.snupkg
+
+# Runtime secrets and local configuration
+.env
+.env.*
+!.env.example
+appsettings.*.local.json
+secrets.json
+authProfiles.json
+*.pfx
+*.cer
+*.key
+
+# Data extracts and local state
+data/
+exports/
+checkpoints/
+*.db
+*.sqlite
+
+# IDE/logs
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.log
+.DS_Store

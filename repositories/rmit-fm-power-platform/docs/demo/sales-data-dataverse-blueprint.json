@@ -1,0 +1,189 @@
+{
+  "$schema": "rmit-fm-demo-blueprint/v1",
+  "artifactType": "NON_DEPLOYABLE_DATAVERSE_BLUEPRINT",
+  "solution": "SalesDataPlatform",
+  "publisherPrefix": "UNRESOLVED_USE_PROJECT_PREFIX_AFTER_APPROVAL",
+  "sourcePlan": "plan.md",
+  "tables": [
+    {
+      "logicalName": "sdp_datasource",
+      "displayName": "DataSource",
+      "purpose": "File-level ingestion tracking",
+      "alternateKeys": [["sdp_googledrivefileid", "sdp_filehash"]],
+      "columns": {
+        "sdp_datasourceid": "Unique identifier",
+        "sdp_filename": "Text required",
+        "sdp_fileurl": "URL/Text required",
+        "sdp_googledrivefileid": "Text",
+        "sdp_folderpath": "Text",
+        "sdp_filetype": "Text",
+        "sdp_filesize": "Whole Number",
+        "sdp_lastmodified": "DateTime",
+        "sdp_filehash": "Text",
+        "sdp_status": "Choice required: New, Validated, Loaded, Rejected, Failed, Completed",
+        "sdp_errormessage": "Multiline Text",
+        "sdp_processedon": "DateTime"
+      }
+    },
+    {
+      "logicalName": "sdp_pipelinerun",
+      "displayName": "PipelineRun",
+      "purpose": "Execution-level audit",
+      "alternateKeys": [["sdp_runid"]],
+      "columns": {
+        "sdp_pipelinerunid": "Unique identifier",
+        "sdp_runid": "Text required",
+        "sdp_datasource": "Lookup sdp_datasource required",
+        "sdp_pipelinename": "Text required",
+        "sdp_starttime": "DateTime required",
+        "sdp_endtime": "DateTime",
+        "sdp_bronzecount": "Whole Number",
+        "sdp_silvercount": "Whole Number",
+        "sdp_goldcount": "Whole Number",
+        "sdp_successcount": "Whole Number",
+        "sdp_errorcount": "Whole Number",
+        "sdp_status": "Choice: Running, Completed, CompletedWithErrors, Failed",
+        "sdp_errormessage": "Multiline Text"
+      }
+    },
+    {
+      "logicalName": "sdp_pipelineerror",
+      "displayName": "PipelineError",
+      "purpose": "Row-level error tracking",
+      "columns": {
+        "sdp_pipelineerrorid": "Unique identifier",
+        "sdp_pipelinerun": "Lookup sdp_pipelinerun",
+        "sdp_datasource": "Lookup sdp_datasource",
+        "sdp_layer": "Choice required: Intake, Bronze, Silver, Gold",
+        "sdp_recordid": "Text",
+        "sdp_errortype": "Text",
+        "sdp_errormessage": "Multiline Text",
+        "sdp_rawvalue": "Multiline Text"
+      }
+    },
+    {
+      "logicalName": "sdp_salesbronze",
+      "displayName": "Sales_Bronze",
+      "purpose": "Preserve source data with minimal transformation",
+      "alternateKeys": [["sdp_datasource", "sdp_rownumber"]],
+      "columns": {
+        "sdp_salesbronzeid": "Unique identifier",
+        "sdp_datasource": "Lookup sdp_datasource required",
+        "sdp_rownumber": "Whole Number required",
+        "sdp_orderid": "Text",
+        "sdp_orderdateraw": "Text",
+        "sdp_customerraw": "Text",
+        "sdp_productraw": "Text",
+        "sdp_qtyraw": "Text",
+        "sdp_unitpriceraw": "Text",
+        "sdp_discountraw": "Text",
+        "sdp_currencyraw": "Text",
+        "sdp_rawjson": "Multiline Text",
+        "sdp_loadstatus": "Choice: Loaded, Error",
+        "sdp_loaderror": "Multiline Text"
+      }
+    },
+    {
+      "logicalName": "sdp_salessilver",
+      "displayName": "Sales_Silver",
+      "purpose": "Cleaned, typed, standardized business data",
+      "alternateKeys": [["sdp_datasource", "sdp_orderid"]],
+      "columns": {
+        "sdp_salessilverid": "Unique identifier",
+        "sdp_datasource": "Lookup sdp_datasource required",
+        "sdp_orderid": "Text required",
+        "sdp_orderdate": "Date",
+        "sdp_customercode": "Text",
+        "sdp_customername": "Text",
+        "sdp_productcode": "Text",
+        "sdp_productname": "Text",
+        "sdp_quantity": "Decimal",
+        "sdp_unitprice": "Decimal",
+        "sdp_discountpct": "Decimal",
+        "sdp_currency": "Text",
+        "sdp_grossamount": "Currency/Decimal",
+        "sdp_discountamount": "Currency/Decimal",
+        "sdp_netamount": "Currency/Decimal",
+        "sdp_dataqualitystatus": "Choice: Valid, Warning, Error",
+        "sdp_dataqualitymessage": "Multiline Text"
+      }
+    },
+    {
+      "logicalName": "sdp_salesgold",
+      "displayName": "Sales_Gold",
+      "purpose": "Reporting-ready data",
+      "alternateKeys": [["sdp_sourcesystem", "sdp_orderid"]],
+      "columns": {
+        "sdp_salesgoldid": "Unique identifier",
+        "sdp_datasource": "Lookup sdp_datasource required",
+        "sdp_sourcesystem": "Text required",
+        "sdp_orderid": "Text required",
+        "sdp_orderdate": "Date",
+        "sdp_year": "Whole Number",
+        "sdp_month": "Whole Number",
+        "sdp_customercode": "Text",
+        "sdp_customername": "Text",
+        "sdp_productcode": "Text",
+        "sdp_productname": "Text",
+        "sdp_currency": "Text",
+        "sdp_grosssales": "Currency/Decimal",
+        "sdp_discountamount": "Currency/Decimal",
+        "sdp_netsales": "Currency/Decimal",
+        "sdp_cost": "Currency/Decimal",
+        "sdp_grossprofit": "Currency/Decimal",
+        "sdp_grossmarginpct": "Decimal",
+        "sdp_salescategory": "Choice/Text: High, Medium, Low",
+        "sdp_reportstatus": "Choice",
+        "sdp_processedon": "DateTime"
+      }
+    },
+    {
+      "logicalName": "sdp_datamapping",
+      "displayName": "DataMapping",
+      "purpose": "Configurable source-to-target mapping",
+      "columns": {
+        "sdp_datamappingid": "Unique identifier",
+        "sdp_sourcesystem": "Text required",
+        "sdp_sourcecolumn": "Text required",
+        "sdp_targettable": "Text required",
+        "sdp_targetcolumn": "Text required",
+        "sdp_datatype": "Text",
+        "sdp_transformationrule": "Text",
+        "sdp_isactive": "Yes/No",
+        "sdp_priority": "Whole Number"
+      }
+    }
+  ],
+  "relationships": [
+    { "from": "sdp_pipelinerun", "to": "sdp_datasource", "type": "N:1" },
+    { "from": "sdp_pipelineerror", "to": "sdp_pipelinerun", "type": "N:1" },
+    { "from": "sdp_pipelineerror", "to": "sdp_datasource", "type": "N:1" },
+    { "from": "sdp_salesbronze", "to": "sdp_datasource", "type": "N:1" },
+    { "from": "sdp_salessilver", "to": "sdp_datasource", "type": "N:1" },
+    { "from": "sdp_salesgold", "to": "sdp_datasource", "type": "N:1" }
+  ],
+  "customApis": [
+    {
+      "uniqueName": "sdp_CalculateSalesGold",
+      "displayName": "CalculateSalesGold",
+      "bindingType": "Unbound",
+      "requestParameters": [
+        { "name": "SilverRecordId", "type": "String", "required": true },
+        { "name": "RunId", "type": "String", "required": false },
+        { "name": "Reprocess", "type": "Boolean", "required": false }
+      ],
+      "responseProperties": [
+        { "name": "SalesGoldId", "type": "String" },
+        { "name": "IsUpdate", "type": "Boolean" },
+        { "name": "ErrorMessage", "type": "String" }
+      ],
+      "pluginType": "SalesDataPlugin.CreateSalesGold"
+    }
+  ],
+  "environmentVariables": [
+    "sdp_GoogleDriveFolderId",
+    "sdp_MaxFileBytes",
+    "sdp_SalesCategoryHighThreshold",
+    "sdp_SalesCategoryMediumThreshold"
+  ]
+}

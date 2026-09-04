@@ -1,0 +1,39 @@
+{
+  "$schema": "rmit-fm-plugin-registration/v1",
+  "artifactType": "NON_DEPLOYABLE_REGISTRATION_BLUEPRINT",
+  "customApi": {
+    "uniqueName": "sdp_CalculateSalesGold",
+    "displayName": "CalculateSalesGold",
+    "bindingType": "Unbound",
+    "isFunction": false,
+    "enabledForWorkflow": true,
+    "pluginType": "SalesDataPlugin.CreateSalesGold",
+    "messageName": "sdp_CalculateSalesGold",
+    "stage": 30,
+    "executionMode": "Synchronous",
+    "note": "Custom API main operation uses the plugin type; do not register a separate step for Stage 30 when using Custom API plugin linkage."
+  },
+  "requestParameters": [
+    { "name": "SilverRecordId", "type": "String", "required": true },
+    { "name": "RunId", "type": "String", "required": false },
+    { "name": "Reprocess", "type": "Boolean", "required": false }
+  ],
+  "responseProperties": [
+    { "name": "SalesGoldId", "type": "String" },
+    { "name": "IsUpdate", "type": "Boolean" },
+    { "name": "ErrorMessage", "type": "String" }
+  ],
+  "idempotency": {
+    "businessKey": ["sdp_sourcesystem", "sdp_orderid"],
+    "behavior": "upsert"
+  },
+  "dependencies": [
+    "sdp_salessilver",
+    "sdp_salesgold",
+    "product cost master data or approved cost lookup",
+    "sdp_SalesCategoryHighThreshold",
+    "sdp_SalesCategoryMediumThreshold"
+  ],
+  "sourcePlan": "plan.md §8–12",
+  "testEvidence": "tests/Rmit.Fm.Dataverse.Plugins.UnitTests/Sales/*"
+}

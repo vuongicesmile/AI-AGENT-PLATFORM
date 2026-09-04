@@ -1,0 +1,118 @@
+{
+  "$schema": "rmit-fm-demo-blueprint/v1",
+  "artifactType": "NON_DEPLOYABLE_CLOUD_FLOW_BLUEPRINT",
+  "solution": "SalesDataPlatform",
+  "flows": [
+    {
+      "name": "PA_Sales_File_Intake",
+      "trigger": "When a DataSource row is created or Status = New",
+      "steps": [
+        {
+          "name": "Validate URL",
+          "action": "Condition",
+          "detail": "FileUrl contains drive.google.com; else Status=Rejected, create PipelineError, terminate"
+        },
+        {
+          "name": "Extract Google Drive File ID",
+          "action": "Compose",
+          "expression": "split(split(triggerOutputs()?['body/fileurl'], '/d/')[1], '/')[0]"
+        },
+        {
+          "name": "Get file metadata",
+          "action": "Google Drive - Get file metadata using id",
+          "validations": [
+            "file exists",
+            "extension = .csv",
+            "file name starts with Sales_",
+            "file size below configured maximum",
+            "file is not empty"
+          ]
+        },
+        {
+          "name": "Download file content",
+          "action": "Google Drive - Get file content using id"
+        },
+        {
+          "name": "Create PipelineRun",
+          "action": "Add a new row",
+          "fields": {
+            "PipelineName": "Sales Pipeline",
+            "StartTime": "utcNow()",
+            "Status": "Running"
+          }
+        },
+        {
+          "name": "Parse CSV",
+          "action": "MVP: Power Automate CSV parsing / production: Dataflow"
+        },
+        {
+          "name": "Insert Bronze",
+          "action": "Apply to each source row",
+          "idempotencyKey": "DataSourceId + RowNumber",
+          "fields": ["raw strings", "DataSourceId", "RowNumber", "LoadStatus=Loaded"]
+        },
+        {
+          "name": "Update DataSource",
+          "action": "Update a row",
+          "success": { "Status": "Loaded", "ProcessedOn": "utcNow()" },
+          "failure": { "Status": "Failed", "createPipelineError": true }
+        }
+      ]
+    },
+    {
+      "name": "PA_Sales_Process_Silver",
+      "trigger": "When DataSource Status = Loaded",
+      "steps": [
+        {
+          "name": "Refresh or invoke Dataflow",
+          "action": "Power Query / Dataflow against Sales_Bronze",
+          "transformations": [
+            "trim text",
+            "DATE_DDMMYYYY",
+            "DECIMAL qty/price",
+            "PERCENT discount",
+            "UPPER currency",
+            "required-field validation",
+            "duplicate OrderId detection",
+            "GrossAmount / DiscountAmount / NetAmount",
+            "DataQualityStatus Valid|Error"
+          ]
+        },
+        {
+          "name": "Write PipelineError for Silver Error rows",
+          "action": "Apply to each invalid Silver row"
+        }
+      ]
+    },
+    {
+      "name": "PA_Sales_Process_Gold",
+      "trigger": "When Silver generation succeeds for DataSource/Run",
+      "steps": [
+        {
+          "name": "List Valid Sales_Silver for DataSource",
+          "action": "List rows"
+        },
+        {
+          "name": "Call CalculateSalesGold",
+          "action": "Perform an unbound action",
+          "customApi": "sdp_CalculateSalesGold",
+          "input": { "SilverRecordId": "@item()?['sdp_salessilverid']" },
+          "concurrencyNote": "MVP sequential Apply to each; benchmark before raising concurrency"
+        },
+        {
+          "name": "Update PipelineRun counts and Status",
+          "action": "Update a row"
+        },
+        {
+          "name": "Update DataSource Status = Completed",
+          "action": "Update a row"
+        }
+      ]
+    }
+  ],
+  "security": [
+    "Least-privilege Google Drive and Dataverse connections",
+    "No hard-coded folder IDs or thresholds — use environment variables",
+    "Separate Dev / Test / Prod solutions and connection references"
+  ]
+}

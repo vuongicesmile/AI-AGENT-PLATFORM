@@ -1,0 +1,104 @@
+{
+  "version": "demo-1.0",
+  "sourceSystem": "GOOGLE_DRIVE",
+  "pipelineName": "Sales Pipeline",
+  "maxFileBytes": 1048576,
+  "allowedExtensions": [".csv"],
+  "fileNamePattern": "^Sales_\\d{4}_\\d{2}\\.csv$",
+  "supportedCurrencies": ["USD", "VND", "AUD"],
+  "salesCategoryThresholds": {
+    "high": 2000,
+    "medium": 1000
+  },
+  "fields": {
+    "orderId": "Order ID",
+    "orderDate": "Date",
+    "customerCode": "Customer Code",
+    "customerName": "Customer",
+    "productCode": "Product Code",
+    "productName": "Product",
+    "quantity": "Qty",
+    "unitPrice": "Unit Price",
+    "discount": "Discount",
+    "currency": "Currency"
+  },
+  "dataMappings": [
+    {
+      "mappingId": "MAP-001",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Order ID",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "OrderId",
+      "dataType": "Text",
+      "transformationRule": "TRIM",
+      "isActive": true,
+      "priority": 10
+    },
+    {
+      "mappingId": "MAP-002",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Date",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "OrderDate",
+      "dataType": "Date",
+      "transformationRule": "DATE_DDMMYYYY",
+      "isActive": true,
+      "priority": 20
+    },
+    {
+      "mappingId": "MAP-003",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Customer",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "CustomerName",
+      "dataType": "Text",
+      "transformationRule": "TRIM",
+      "isActive": true,
+      "priority": 30
+    },
+    {
+      "mappingId": "MAP-004",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Qty",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "Quantity",
+      "dataType": "Decimal",
+      "transformationRule": "DECIMAL",
+      "isActive": true,
+      "priority": 40
+    },
+    {
+      "mappingId": "MAP-005",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Unit Price",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "UnitPrice",
+      "dataType": "Decimal",
+      "transformationRule": "DECIMAL",
+      "isActive": true,
+      "priority": 50
+    },
+    {
+      "mappingId": "MAP-006",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Discount",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "DiscountPct",
+      "dataType": "Decimal",
+      "transformationRule": "PERCENT",
+      "isActive": true,
+      "priority": 60
+    },
+    {
+      "mappingId": "MAP-007",
+      "sourceSystem": "GOOGLE_DRIVE",
+      "sourceColumn": "Currency",
+      "targetTable": "Sales_Silver",
+      "targetColumn": "Currency",
+      "dataType": "Text",
+      "transformationRule": "UPPER",
+      "isActive": true,
+      "priority": 70
+    }
+  ]
+}
