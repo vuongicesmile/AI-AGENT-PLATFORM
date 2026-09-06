@@ -56,7 +56,8 @@ Danh sách trên là tiến trình công việc, không phải tất cả đã h
 
 ### Xác nhận trước khi commit checkpoint
 
-- Chạy lại plugin tests sau thay đổi cuối: **15 passed, 0 failed**, đồng thời build được Batch plugin mới. Batch plugin chưa có test hành vi riêng.
+- Chạy lại plugin tests sau thay đổi cuối: **36 passed, 0 failed**, gồm kiểm thử URL Google Drive, khóa lineage, PreImage và bảo vệ Batch plugin. Assembly build Release thành công.
+- Đã thêm `scripts/deploy_sales_plugin.py` (preflight/apply idempotent) và `scripts/smoke_sales_plugin.py` (synthetic live test); chưa chạy apply vì phiên Azure CLI vừa hết silent token và sẽ cần đăng nhập lại.
 - Parser tests đã đạt **17 passed** trong phiên implementation, không thay đổi source sau lần chạy đó.
 - Kiểm tra JavaScript syntax bằng `node --check`; các script Python được kiểm tra AST không ghi bytecode (máy chặn tạo thư mục `scripts/__pycache__`).
 - Đã nhận đầy đủ kết quả build app cuối: publish thành công và verify 95/95. Không còn tiến trình build app chạy nền.

@@ -38,11 +38,13 @@ class DemoDataverse:
     def rows(self, table, filter, select=None, top=100):
         return [dict(row) for row in self.client.records.list(table, filter=filter, select=select, top=top)]
 
-    def api(self, method, path, payload=None):
+    def api(self, method, path, payload=None, *, representation=False):
         # Only call for SDK gaps: CSDL, specialized metadata updates and unbound actions.
         headers = self.auth.get_plugin_headers(self.skill, self.auth.get_token())
         headers.update({"Accept": "application/xml" if path == "$metadata" else "application/json", "OData-Version": "4.0",
             "MSCRM.SolutionName": self.solution, "MSCRM.SolutionUniqueName": self.solution})
+        if representation:
+            headers["Prefer"] = "return=representation"
         response = self.requests.request(method, self.url + path, headers=headers, json=payload, timeout=120)
         if not response.ok:
             raise RuntimeError(f"Dataverse {method} {path.split('?')[0]}: {response.status_code} {response.text[:1800]}")
@@ -76,11 +78,21 @@ class DemoDataverse:
             if entity.get("Name") in names:
                 metadata[entity.get("Name")] = [{"kind": p.tag.split("}")[-1], **p.attrib} for p in entity]
         (ROOT / ".dataverse/plugin-metadata.json").write_text(json.dumps(metadata, indent=2), encoding="utf-8")
+        component_options = self.api("GET", "EntityDefinitions(LogicalName='solutioncomponent')/Attributes(LogicalName='componenttype')/Microsoft.Dynamics.CRM.PicklistAttributeMetadata?$expand=OptionSet")
+        codes = {o["Label"]["UserLocalizedLabel"]["Label"].lower(): o["Value"] for o in component_options["OptionSet"]["Options"]}
+        (ROOT / ".dataverse/component-types.json").write_text(json.dumps(codes, indent=2), encoding="utf-8")
         print(json.dumps({"metadata": list(metadata), "assemblyCount": len(self.rows("pluginassembly", "name eq 'SalesDemo.Plugin'", ["pluginassemblyid"]))}))
+
+    def status(self):
+        for table in ["sdp_pipelinebatch", "sdp_salesbronze", "sdp_salessilver", "sdp_salesgold", "sdp_pipelineerror"]:
+            keys = self.client.tables.get_alternate_keys(table)
+            print(json.dumps({"table": table, "keys": [{"schema": k.schema_name, "columns": k.key_attributes, "status": k.status} for k in keys]}), flush=True)
+        print(json.dumps({"apps": self.rows("appmodule", "uniquename eq 'sdp_salesdemo'", ["name", "uniquename"]),
+            "assemblies": self.rows("pluginassembly", "name eq 'SalesDemo.Plugin'", ["name", "version"])}), flush=True)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["inspect"])
+    parser.add_argument("command", choices=["inspect", "status"])
     args = parser.parse_args()
-    DemoDataverse().inspect()
+    getattr(DemoDataverse(), args.command)()

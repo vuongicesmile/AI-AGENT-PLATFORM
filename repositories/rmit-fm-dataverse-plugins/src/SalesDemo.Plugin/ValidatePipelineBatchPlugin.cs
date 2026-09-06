@@ -30,7 +30,8 @@ namespace SalesDemo.Plugin
                 }
                 foreach (var field in target.Attributes) row[field.Key] = field.Value;
                 foreach (var field in new[] { "sdp_batchkey", "sdp_runkey" })
-                    if (!Regex.IsMatch(SalesRules.Text(row, field), @"^[A-Za-z0-9_-]{1,80}$"))
+                    if (SalesRules.Text(row, field) != row.GetAttributeValue<string>(field) ||
+                        !Regex.IsMatch(SalesRules.Text(row, field), @"\A[A-Za-z0-9_-]{1,80}\z"))
                         throw new InvalidPluginExecutionException(field + " phải gồm 1–80 ký tự chữ, số, gạch ngang hoặc gạch dưới.");
                 if (row.GetAttributeValue<string>("sdp_status") == "Requested") {
                     var url = SalesRules.Text(row, "sdp_sourceurl");
