@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{30afe7ce-8435-4c42-83eb-79a25ab84160}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="010fbba4-103d-45b3-a44b-96a4bda61746" name="tab_general" expanded="true" visible="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="875fdfa3-9080-467c-b660-b9d45160dd86" name="section_general" showlabel="false" visible="true" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="9b4b888f-6b06-4fa5-978d-2e4648c36643" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="8bbc25be-bb89-4776-b419-8bb908acbb89" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_name" disabled="false" isrequired="true" />
+                      </cell>
+                      <cell id="db3c80d4-92cb-420c-a9ac-abef8d3c8462" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Batch Key" languagecode="1033" />
+                        </labels>
+                        <control id="cd180ac3-b2d7-4a43-a2bc-4453893eb9ee" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_batchkey" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="ccbad221-1f3b-468e-8e91-2b56a91869d6" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Error Message" languagecode="1033" />
+                        </labels>
+                        <control id="c14b1932-e90b-4ba3-86fc-42fd2f142cf9" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="sdp_errormessage" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="0d4b43aa-f069-4cd1-8784-3ea8ea847693" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Error Type" languagecode="1033" />
+                        </labels>
+                        <control id="9f20214b-dac8-431d-8c50-2e5a21b9c9c9" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_errortype" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="f33d41e1-54f8-4b54-b578-93c21ad67259" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Layer" languagecode="1033" />
+                        </labels>
+                        <control id="014706ba-83f0-4cb8-bb23-9d84ce115f2d" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_layer" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="9dd4807a-fad8-40f9-ae32-d2326c735250" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Raw Value" languagecode="1033" />
+                        </labels>
+                        <control id="e6e4a64c-be9d-486b-a251-0a7d5cc379c0" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="sdp_rawvalue" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="e56b1500-e1ea-4735-a49f-e6b28d293f02" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Record Key" languagecode="1033" />
+                        </labels>
+                        <control id="b375d8e0-232a-4ef8-9200-80af3729c4b2" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_recordkey" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="aed1803b-4f9a-4573-88a4-5793375c680f" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Source Record ID" languagecode="1033" />
+                        </labels>
+                        <control id="ca430140-f99c-4438-be6f-9a796f9b4af8" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_sourcerecordid" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{7f70ad05-93ae-4a07-b929-3429154dcde9}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{44182851-bd4a-4ad9-8323-fe6fa25f120a}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{219f13bb-6989-470a-994a-8b4a45410286}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{b466d5e3-02cc-46c7-90dd-d81dfd805008}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{a7e2f750-1ca7-4df2-bb1d-60e843f8669d}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{1597f950-a07d-4163-a977-7753c3b90e2c}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1e0c2215-b833-4dcf-8d82-8b9844806819}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{c3b9a93f-5050-47d9-ba88-b314d5aa4143}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="SDP Demo - Lỗi xử lý" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Xem chi tiết và đối chiếu dữ liệu: Lỗi xử lý" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

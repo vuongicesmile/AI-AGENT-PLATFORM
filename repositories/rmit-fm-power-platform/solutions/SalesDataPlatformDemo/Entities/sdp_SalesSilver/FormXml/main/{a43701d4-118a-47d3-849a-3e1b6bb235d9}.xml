@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a43701d4-118a-47d3-849a-3e1b6bb235d9}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="b8b38ab4-55bd-416e-aea4-3dabcc5e41ff" name="tab_general" expanded="true" visible="true">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="5ff13335-6a1c-4172-8b15-20f01d5252cb" name="section_general" showlabel="false" visible="true" columns="11">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="9a64a270-9249-49bc-94c1-78336009b468" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="d70c7365-f0f0-49df-b869-9eedfcaa7827" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_name" disabled="false" isrequired="true" />
+                      </cell>
+                      <cell id="719f9508-dcb1-4bed-a50b-49c809778277" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Batch Key" languagecode="1033" />
+                        </labels>
+                        <control id="bddf98d4-952a-4c6e-b6f5-a270e083efd0" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_batchkey" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="e38cfa17-dbac-4837-8c1a-d9823af51e78" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Currency" languagecode="1033" />
+                        </labels>
+                        <control id="2fdaa7b3-b8e7-404c-8e92-2880fc76f9b9" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_currency" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="a5b7742d-5e7a-497a-820c-e135b464187f" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Customer Code" languagecode="1033" />
+                        </labels>
+                        <control id="b629ab86-b2f1-466e-8f6e-5dfa0c54aa79" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_customercode" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="13e2a4ad-ba20-461b-9568-7fea37375466" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Customer Name" languagecode="1033" />
+                        </labels>
+                        <control id="09ad2899-1150-4c41-adda-3810bab11dbf" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_customername" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="4c064d4b-4e7a-45eb-8023-9dec2bbbdf3f" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Data Quality Message" languagecode="1033" />
+                        </labels>
+                        <control id="6d0dae11-142c-4c43-a4b8-10a7f184a6a7" classid="{E0DECE4B-6FC8-4A8F-A065-082708572369}" datafieldname="sdp_dataqualitymessage" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="80e5dee5-6458-45a8-862a-3e3e2004b35b" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Data Quality Status" languagecode="1033" />
+                        </labels>
+                        <control id="89eb4fd7-0d76-4511-acd7-0851b29e8e05" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_dataqualitystatus" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="fc620771-ed64-4b60-a035-5d6fe0f80427" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Discount Amount" languagecode="1033" />
+                        </labels>
+                        <control id="c6c27c8c-3a3c-4fa9-a0a4-f27e9cf8eb12" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_discountamount" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="d22e756f-d726-4600-ab05-6e371dabf1d7" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Discount Percent" languagecode="1033" />
+                        </labels>
+                        <control id="2fe818e1-493c-48a8-afbb-2099e37f31bd" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_discountpct" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="f3d8d45e-fb27-4a31-96a6-7e21bf05aeb7" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Gross Amount" languagecode="1033" />
+                        </labels>
+                        <control id="d2b526af-efce-4404-b2b2-67c353c5be10" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_grossamount" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="d0a1ed96-fff0-422d-86c7-77897b3de689" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Net Amount" languagecode="1033" />
+                        </labels>
+                        <control id="40fbdc04-976e-4313-815e-2a6e1f6875b2" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_netamount" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="396d2d45-7fea-4317-85fc-6eea506c5124" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Order Date" languagecode="1033" />
+                        </labels>
+                        <control id="d652f409-6ffc-4baf-8482-bfa0c3669925" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sdp_orderdate" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="c70ea4ef-95cf-46c0-a218-23667d8a3875" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Order ID" languagecode="1033" />
+                        </labels>
+                        <control id="6109fa73-619f-49f0-ab28-f0ae28fddb91" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_orderid" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="a0459a5a-25fa-4039-b76e-e2f107ce77b4" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Product Code" languagecode="1033" />
+                        </labels>
+                        <control id="9c12ac9d-f462-48a5-adda-9c690ce1f74b" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_productcode" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="7f00b4aa-749d-4931-a526-70879228a6ad" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Product Name" languagecode="1033" />
+                        </labels>
+                        <control id="dbdabff6-4abc-45db-acb6-9f18052fce6e" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_productname" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="d88272e5-a48e-47b7-9312-1b600dc23f74" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="44275f32-702b-43cb-b1d9-d84ab78b5395" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_quantity" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="05b3aeef-a94d-406f-83c1-d6217b56ade4" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Record Key" languagecode="1033" />
+                        </labels>
+                        <control id="90966902-b4b5-4a2a-a413-4df1034ba0a5" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_recordkey" disabled="false" isrequired="false" />
+                      </cell>
+                      <cell id="d98d7660-011b-4db2-8c28-24f2f0f6e630" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Unit Price" languagecode="1033" />
+                        </labels>
+                        <control id="adcdef4c-3c79-4089-93eb-c5bf2f4b80a5" classid="{C3EFE0C3-0EC6-42BE-8349-CBD9079DFD8E}" datafieldname="sdp_unitprice" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{40af8e7b-0658-40ad-aea6-3562afa69861}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{55540e2d-105d-49f4-a36e-54e26b3a6c49}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{0edc0fdd-a9e0-4148-b042-91c6a7a62501}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a2541b0b-2fe3-48e8-80a7-c749678809d3}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{0fbb3671-7c99-48d3-b70a-63b1d9352568}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{885665c8-dfaf-4224-b873-75573ac3a6e7}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a9400eed-164c-49f1-b9a4-4f8f82354722}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8c41f009-5ba8-4a04-b67e-088084ca4b0e}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="SDP Demo - Dữ liệu Bạc" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Xem chi tiết và đối chiếu dữ liệu: Dữ liệu Bạc" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

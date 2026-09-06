@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModuleSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SiteMapUniqueName>sdp_salesdemo</SiteMapUniqueName>
+  <EnableCollapsibleGroups>False</EnableCollapsibleGroups>
+  <ShowHome>True</ShowHome>
+  <ShowPinned>True</ShowPinned>
+  <ShowRecents>True</ShowRecents>
+  <SiteMap IntroducedVersion="7.0.0.0">
+    <Area Id="area_0" ShowGroups="true" ResourceId="SitemapDesigner.NewTitle" DescriptionResourceId="SitemapDesigner.NewTitle" IntroducedVersion="7.0.0.0">
+      <Titles>
+        <Title LCID="1033" Title="Sales Demo" />
+      </Titles>
+      <Group Id="group_0_0" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" ToolTipResourseId="SitemapDesigner.Unknown" IntroducedVersion="7.0.0.0" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Vận hành" />
+        </Titles>
+        <SubArea Id="sub_0_0_0" Entity="sdp_pipelinebatch" ResourceId="SitemapDesigner.NewSubArea" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" Sku="All,OnPremise,Live,SPLA" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Lô dữ liệu" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="sub_0_0_1" Entity="sdp_pipelineerror" ResourceId="SitemapDesigner.NewSubArea" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" Sku="All,OnPremise,Live,SPLA" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Lỗi xử lý" />
+          </Titles>
+        </SubArea>
+      </Group>
+      <Group Id="group_0_1" ResourceId="SitemapDesigner.NewGroup" DescriptionResourceId="SitemapDesigner.NewGroup" ToolTipResourseId="SitemapDesigner.Unknown" IntroducedVersion="7.0.0.0" IsProfile="false">
+        <Titles>
+          <Title LCID="1033" Title="Ba tầng dữ liệu" />
+        </Titles>
+        <SubArea Id="sub_0_1_0" Entity="sdp_salesbronze" ResourceId="SitemapDesigner.NewSubArea" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" Sku="All,OnPremise,Live,SPLA" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Dữ liệu Đồng" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="sub_0_1_1" Entity="sdp_salessilver" ResourceId="SitemapDesigner.NewSubArea" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" Sku="All,OnPremise,Live,SPLA" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Dữ liệu Bạc" />
+          </Titles>
+        </SubArea>
+        <SubArea Id="sub_0_1_2" Entity="sdp_salesgold" ResourceId="SitemapDesigner.NewSubArea" Client="All,Outlook,OutlookLaptopClient,OutlookWorkstationClient,Web" Sku="All,OnPremise,Live,SPLA" AvailableOffline="true" PassParams="false">
+          <Titles>
+            <Title LCID="1033" Title="Dữ liệu Vàng" />
+          </Titles>
+        </SubArea>
+      </Group>
+    </Area>
+  </SiteMap>
+  <LocalizedNames>
+    <LocalizedName description="Sales Demo" languagecode="1033" />
+  </LocalizedNames>
+</AppModuleSiteMap>

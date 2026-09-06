@@ -11,3 +11,10 @@ __pycache__/
 solutions/*.zip
 plugins/**/bin/
 plugins/**/obj/
+.tools/
+**/bin/
+**/obj/
+**/TestResults/
+**/local.settings.json
+**/.maker-workspace/
+**/node_modules/

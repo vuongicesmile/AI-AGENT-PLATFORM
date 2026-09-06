@@ -1,0 +1,9 @@
+- thiết lập debugger error + log
+- thêm filed notification mỗi khi có thay đổi
+- create command button
+- sử dụng xrm để navigation custom page
+- tạo plugin
+- tạo azure function/ trigger schedule
+- tạo connector
+- sài azure service bus / automate
+-

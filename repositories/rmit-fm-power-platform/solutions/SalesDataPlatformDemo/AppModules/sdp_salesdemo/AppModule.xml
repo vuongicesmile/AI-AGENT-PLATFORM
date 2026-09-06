@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AppModule>
+  <UniqueName>sdp_salesdemo</UniqueName>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <WebResourceId>5ba4b970-bca9-f111-aaad-00224819a344</WebResourceId>
+  <OptimizedFor></OptimizedFor>
+  <statecode>0</statecode>
+  <statuscode>1</statuscode>
+  <FormFactor>1</FormFactor>
+  <ClientType>4</ClientType>
+  <NavigationType>0</NavigationType>
+  <AppModuleComponents>
+    <AppModuleComponent type="1" schemaName="sdp_pipelinebatch" />
+    <AppModuleComponent type="1" schemaName="sdp_pipelineerror" />
+    <AppModuleComponent type="1" schemaName="sdp_salesbronze" />
+    <AppModuleComponent type="1" schemaName="sdp_salesgold" />
+    <AppModuleComponent type="1" schemaName="sdp_salessilver" />
+    <AppModuleComponent type="26" id="{7e868ee0-d6cb-4522-8c63-11b3e25392c7}" />
+    <AppModuleComponent type="26" id="{129a3a96-641f-487c-a84f-17b95c1f0820}" />
+    <AppModuleComponent type="26" id="{d8cd988c-2ef1-4620-9d85-4b602146c790}" />
+    <AppModuleComponent type="26" id="{7e03c9cd-6389-4d94-b5cd-4cb17d6eaa05}" />
+    <AppModuleComponent type="26" id="{f2f6deba-1217-46c2-a7b5-4d9f1214f519}" />
+    <AppModuleComponent type="26" id="{182f4971-64c4-43e5-80dd-773e731c31d5}" />
+    <AppModuleComponent type="26" id="{f6d07eca-0d5c-4045-b7fd-80f0b3c9bfbe}" />
+    <AppModuleComponent type="26" id="{66916a3f-b2e7-4447-b28f-865984f2b7c5}" />
+    <AppModuleComponent type="26" id="{ce9b665d-cfdf-4e10-a967-879ddedb345f}" />
+    <AppModuleComponent type="26" id="{3df1d0b0-bae6-48db-ac49-8df2149ef565}" />
+    <AppModuleComponent type="26" id="{eebb3a86-8fd9-48f9-a98b-b84326a6861c}" />
+    <AppModuleComponent type="26" id="{b97c900a-49ba-4b63-b8b4-b8f93752452e}" />
+    <AppModuleComponent type="26" id="{2e9753f6-ff38-4808-b841-c4dae64d9a36}" />
+    <AppModuleComponent type="26" id="{f783fd22-31f2-4fef-a541-dce5849c241b}" />
+    <AppModuleComponent type="26" id="{e71fde78-c29a-409a-b113-e0ca11587c09}" />
+    <AppModuleComponent type="60" id="{69ecf14a-7126-4daa-b752-09cb83ba7447}" />
+    <AppModuleComponent type="60" id="{a43701d4-118a-47d3-849a-3e1b6bb235d9}" />
+    <AppModuleComponent type="60" id="{f4356e55-9af0-482a-b7c9-45cbd757c864}" />
+    <AppModuleComponent type="60" id="{70c0dbda-c080-43e2-9ff2-5226698d15c0}" />
+    <AppModuleComponent type="60" id="{b7fb6906-c412-42fc-b979-6b597302c125}" />
+    <AppModuleComponent type="60" id="{32a2b42c-c5b1-41a6-aaad-74ccdeca2a90}" />
+    <AppModuleComponent type="60" id="{30afe7ce-8435-4c42-83eb-79a25ab84160}" />
+    <AppModuleComponent type="60" id="{e32272a7-b247-4927-8219-a17dbbd27ec3}" />
+    <AppModuleComponent type="60" id="{4dc8b49f-1235-4e48-9c19-b959eb2512e5}" />
+    <AppModuleComponent type="60" id="{b7c4f369-c5fe-4b88-be2c-be3bc7861b90}" />
+    <AppModuleComponent type="62" schemaName="sdp_salesdemo" />
+  </AppModuleComponents>
+  <AppModuleRoleMaps>
+    <Role id="{627090ff-40a3-4053-8790-584edc5be201}" />
+    <Role id="{119f245c-3cc8-4b62-b31c-d1a046ced15d}" />
+  </AppModuleRoleMaps>
+  <LocalizedNames>
+    <LocalizedName description="Sales Demo" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="Gửi và theo dõi lô dữ liệu bán hàng qua Đồng, Bạc, Vàng." languagecode="1033" />
+  </Descriptions>
+  <appsettings>
+    <appsetting settingdefinitionid.uniquename="AppChannel">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="FormFillBarUXEnabled">
+      <iscustomizable>1</iscustomizable>
+      <value>1</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="HeaderAndNavigationRefresh">
+      <iscustomizable>1</iscustomizable>
+      <value>2</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="m365copilotmodelappenabled">
+      <iscustomizable>1</iscustomizable>
+      <value>0</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="NewLookAlwaysOn">
+      <iscustomizable>1</iscustomizable>
+      <value>true</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="NLChartDataVisualizationSetting">
+      <iscustomizable>1</iscustomizable>
+      <value>0</value>
+    </appsetting>
+    <appsetting settingdefinitionid.uniquename="NLGridSearchSetting">
+      <iscustomizable>1</iscustomizable>
+      <value>0</value>
+    </appsetting>
+  </appsettings>
+</AppModule>

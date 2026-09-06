@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{69ecf14a-7126-4daa-b752-09cb83ba7447}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>0</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab id="c0752a3c-d459-40f5-aa84-5ccfb6bb152a" name="tab_0" expanded="true" visible="true">
+          <labels>
+            <label description="Lô dữ liệu" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section id="a0c20654-f92f-47ce-a5fa-7f6f432a78af" name="section_0_0" showlabel="true" visible="true" columns="1">
+                  <labels>
+                    <label description="Gửi dữ liệu" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="5b9338bf-2cd7-465a-8370-982d736c6e35" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Name" languagecode="1033" />
+                        </labels>
+                        <control id="545b1de5-fa03-40bc-9ab9-dbeb337697e4" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_name" disabled="false" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="6425018a-9229-4234-a7b0-e189a8d16f0a" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Source URL" languagecode="1033" />
+                        </labels>
+                        <control id="7c7d934f-783d-43dd-bb50-077f4a54dca7" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_sourceurl" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="da6cf06a-60cf-489a-bece-529bd6e4d761" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Status" languagecode="1033" />
+                        </labels>
+                        <control id="46ff97b1-c075-43dd-9b00-0d9d3f063781" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_status" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section id="a527e2cd-7088-4b75-abcd-b3ccd3187cca" name="section_0_1" showlabel="true" visible="true" columns="11">
+                  <labels>
+                    <label description="Kết quả xử lý" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="0a3c0b12-41bf-482d-ad77-c41859cf58e3" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Bronze Count" languagecode="1033" />
+                        </labels>
+                        <control id="fa54ad84-1518-4459-999d-042c37e9baad" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="sdp_bronzecount" disabled="true" isrequired="false" />
+                      </cell>
+                      <cell id="63f7fdeb-8931-4ed9-961a-1888babcf706" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Silver Count" languagecode="1033" />
+                        </labels>
+                        <control id="b8a0d2f6-a3b7-4037-bab5-058d01f1ea85" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="sdp_silvercount" disabled="true" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="2abf02e9-8b31-47d8-96f9-d4ea8be6a095" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Gold Count" languagecode="1033" />
+                        </labels>
+                        <control id="d7e82a19-e827-48f0-9e8a-addc5ecea52f" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="sdp_goldcount" disabled="true" isrequired="false" />
+                      </cell>
+                      <cell id="ec9bf5bc-4474-4248-83cb-03b7f157af47" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Error Count" languagecode="1033" />
+                        </labels>
+                        <control id="48a4f528-6eb6-41b8-9720-73bbf1fb34c2" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="sdp_errorcount" disabled="true" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section id="76e9a968-887c-48ae-a627-46c92ef4c30b" name="section_0_2" showlabel="true" visible="true" columns="11">
+                  <labels>
+                    <label description="Tra cứu lần chạy" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="f901974c-7ef0-4427-bd90-beba774a4987" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Batch Key" languagecode="1033" />
+                        </labels>
+                        <control id="3dd326eb-ed60-4da8-853d-a11a8d49ae54" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_batchkey" disabled="true" isrequired="false" />
+                      </cell>
+                      <cell id="d559eab5-7ed8-4e33-a206-0e1bef14999a" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Run Key" languagecode="1033" />
+                        </labels>
+                        <control id="9ec97725-7ce4-493e-9031-f4c5bda861c9" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="sdp_runkey" disabled="false" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="272987ff-a16f-441a-844e-46670952c761" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Started On" languagecode="1033" />
+                        </labels>
+                        <control id="0a1a31af-4da7-426e-9054-de22c0b0024c" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sdp_startedon" disabled="true" isrequired="false" />
+                      </cell>
+                      <cell id="bbab2981-821b-4582-bdae-07ffdf0a4afb" showlabel="true" visible="true" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Processed On" languagecode="1033" />
+                        </labels>
+                        <control id="7986b7ed-99ab-4de1-8cff-ed1649bdac01" classid="{5B773807-9FB2-42DB-97C3-7A91EFF8ADFF}" datafieldname="sdp_processedon" disabled="true" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{3afaddc9-bde5-4d7b-97fb-0f14fe44759b}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{a2624e05-0e6e-40ee-8239-bde91bd363aa}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{a4a92022-b2f8-4f6d-b019-1bb28cf29645}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{cc03a7cd-282f-4ff5-ae76-50b1ddbca0e0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{a6dc107e-b1e7-479d-81fe-0b7e1eefaeb9}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{29161906-dfd9-42d3-81c2-a3c3d7485a25}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{1936dd8d-777d-4297-9453-99acd15129be}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6259b24d-7240-4f1a-ae68-2fae4e9b05c9}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+      <events>
+        <event name="onload" application="false" active="false">
+          <Handlers>
+            <Handler functionName="SalesDemo.onLoad" libraryName="sdp_/scripts/sales-demo-form.js" enabled="true" parameters="" passExecutionContext="true" handlerUniqueId="{06e72ab1-0aa9-44b8-bf98-4b2f63bd320c}" />
+          </Handlers>
+        </event>
+        <event name="onchange" application="false" active="false" attribute="sdp_sourceurl">
+          <Handlers>
+            <Handler functionName="SalesDemo.onSourceUrlChange" libraryName="sdp_/scripts/sales-demo-form.js" enabled="true" parameters="" passExecutionContext="true" handlerUniqueId="{6fd1cb11-8aa7-4bf5-a6dc-d4efa34ee5bd}" />
+          </Handlers>
+        </event>
+      </events>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="SDP Demo - Lô dữ liệu" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Xem chi tiết và đối chiếu dữ liệu: Lô dữ liệu" languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

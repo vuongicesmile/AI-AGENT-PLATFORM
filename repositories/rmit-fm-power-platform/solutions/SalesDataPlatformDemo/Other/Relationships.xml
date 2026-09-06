@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="lk_sdp_pipelinebatch_createdby" />
+  <EntityRelationship Name="lk_sdp_pipelinebatch_modifiedby" />
+  <EntityRelationship Name="lk_sdp_pipelineerror_createdby" />
+  <EntityRelationship Name="lk_sdp_pipelineerror_modifiedby" />
+  <EntityRelationship Name="lk_sdp_salesbronze_createdby" />
+  <EntityRelationship Name="lk_sdp_salesbronze_modifiedby" />
+  <EntityRelationship Name="lk_sdp_salesgold_createdby" />
+  <EntityRelationship Name="lk_sdp_salesgold_modifiedby" />
+  <EntityRelationship Name="lk_sdp_salessilver_createdby" />
+  <EntityRelationship Name="lk_sdp_salessilver_modifiedby" />
+  <EntityRelationship Name="organization_sdp_pipelinebatch" />
+  <EntityRelationship Name="organization_sdp_pipelineerror" />
+  <EntityRelationship Name="organization_sdp_salesbronze" />
+  <EntityRelationship Name="organization_sdp_salesgold" />
+  <EntityRelationship Name="organization_sdp_salessilver" />
+</EntityRelationships>

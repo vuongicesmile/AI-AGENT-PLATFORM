@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f783fd22-31f2-4fef-a541-dce5849c241b}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="sdp_name" select="1" icon="1" preview="1">
+        <row name="result" id="sdp_salessilverid">
+          <cell name="sdp_name" width="100" />
+          <cell name="sdp_batchkey" width="100" />
+          <cell name="sdp_orderid" width="100" />
+          <cell name="sdp_quantity" width="100" />
+          <cell name="sdp_netamount" width="100" />
+          <cell name="sdp_dataqualitystatus" width="100" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="sdp_salessilver">
+          <attribute name="sdp_name" />
+          <attribute name="sdp_batchkey" />
+          <attribute name="sdp_orderid" />
+          <attribute name="sdp_quantity" />
+          <attribute name="sdp_netamount" />
+          <attribute name="sdp_dataqualitystatus" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="SDP Demo - Dữ liệu Bạc" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Danh sách phục vụ vận hành: Dữ liệu Bạc" languagecode="1033" />
+    </Descriptions>
+  </savedquery>
+</savedqueries>

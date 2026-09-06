@@ -1,0 +1,721 @@
+{
+  "solution": {
+    "uniqueName": "SalesDataPlatformDemo",
+    "displayName": "Sales Data Platform Demo",
+    "publisherPrefix": "sdp"
+  },
+  "app": {
+    "name": "Sales Demo",
+    "description": "Gửi và theo dõi lô dữ liệu bán hàng qua Đồng, Bạc, Vàng.",
+    "newLook": true
+  },
+  "entities": [
+    {
+      "schemaName": "sdp_pipelinebatch",
+      "displayName": "Lô dữ liệu",
+      "pluralName": "Lô dữ liệu",
+      "existing": true,
+      "description": "Tái sử dụng bảng Sales Demo đã có: Lô dữ liệu",
+      "primaryAttribute": {
+        "schemaName": "sdp_name",
+        "displayName": "Tên"
+      },
+      "columns": [
+        {
+          "schemaName": "sdp_batchkey",
+          "displayName": "Batch Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Batch Key"
+        },
+        {
+          "schemaName": "sdp_bronzecount",
+          "displayName": "Bronze Count",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Bronze Count"
+        },
+        {
+          "schemaName": "sdp_errorcount",
+          "displayName": "Error Count",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Error Count"
+        },
+        {
+          "schemaName": "sdp_filehash",
+          "displayName": "File Hash",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: File Hash"
+        },
+        {
+          "schemaName": "sdp_filename",
+          "displayName": "File Name",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: File Name"
+        },
+        {
+          "schemaName": "sdp_goldcount",
+          "displayName": "Gold Count",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Gold Count"
+        },
+        {
+          "schemaName": "sdp_googledrivefileid",
+          "displayName": "Google Drive File ID",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Google Drive File ID"
+        },
+        {
+          "schemaName": "sdp_processedon",
+          "displayName": "Processed On",
+          "type": "DateTime",
+          "description": "Dữ liệu Sales Demo: Processed On"
+        },
+        {
+          "schemaName": "sdp_runkey",
+          "displayName": "Run Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Run Key"
+        },
+        {
+          "schemaName": "sdp_silvercount",
+          "displayName": "Silver Count",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Silver Count"
+        },
+        {
+          "schemaName": "sdp_sourceurl",
+          "displayName": "Source URL",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Source URL"
+        },
+        {
+          "schemaName": "sdp_status",
+          "displayName": "Status",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Status"
+        },
+        {
+          "schemaName": "sdp_startedon",
+          "displayName": "Started On",
+          "type": "DateTime",
+          "description": "Thời điểm bắt đầu lần chạy hiện tại, dùng theo dõi batch chậm."
+        },
+        {
+          "schemaName": "sdp_silverrequestedon",
+          "displayName": "Silver Requested On",
+          "type": "DateTime",
+          "description": "Mốc thời gian đối chiếu callback Dataflow."
+        },
+        {
+          "schemaName": "sdp_silverrunkey",
+          "displayName": "Silver Run Key",
+          "type": "Text",
+          "description": "Lần chạy sở hữu refresh Silver đang chờ."
+        }
+      ]
+    },
+    {
+      "schemaName": "sdp_pipelineerror",
+      "displayName": "Lỗi xử lý",
+      "pluralName": "Lỗi xử lý",
+      "existing": true,
+      "description": "Tái sử dụng bảng Sales Demo đã có: Lỗi xử lý",
+      "primaryAttribute": {
+        "schemaName": "sdp_name",
+        "displayName": "Tên"
+      },
+      "columns": [
+        {
+          "schemaName": "sdp_batchkey",
+          "displayName": "Batch Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Batch Key"
+        },
+        {
+          "schemaName": "sdp_errormessage",
+          "displayName": "Error Message",
+          "type": "Memo",
+          "description": "Dữ liệu Sales Demo: Error Message"
+        },
+        {
+          "schemaName": "sdp_errortype",
+          "displayName": "Error Type",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Error Type"
+        },
+        {
+          "schemaName": "sdp_layer",
+          "displayName": "Layer",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Layer"
+        },
+        {
+          "schemaName": "sdp_rawvalue",
+          "displayName": "Raw Value",
+          "type": "Memo",
+          "description": "Dữ liệu Sales Demo: Raw Value"
+        },
+        {
+          "schemaName": "sdp_recordkey",
+          "displayName": "Record Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Record Key"
+        },
+        {
+          "schemaName": "sdp_sourcerecordid",
+          "displayName": "Source Record ID",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Source Record ID"
+        }
+      ]
+    },
+    {
+      "schemaName": "sdp_salesbronze",
+      "displayName": "Dữ liệu Đồng",
+      "pluralName": "Dữ liệu Đồng",
+      "existing": true,
+      "description": "Tái sử dụng bảng Sales Demo đã có: Dữ liệu Đồng",
+      "primaryAttribute": {
+        "schemaName": "sdp_name",
+        "displayName": "Tên"
+      },
+      "columns": [
+        {
+          "schemaName": "sdp_batchkey",
+          "displayName": "Batch Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Batch Key"
+        },
+        {
+          "schemaName": "sdp_loaderror",
+          "displayName": "Load Error",
+          "type": "Memo",
+          "description": "Dữ liệu Sales Demo: Load Error"
+        },
+        {
+          "schemaName": "sdp_loadstatus",
+          "displayName": "Load Status",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Load Status"
+        },
+        {
+          "schemaName": "sdp_orderid",
+          "displayName": "Order ID",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Order ID"
+        },
+        {
+          "schemaName": "sdp_rawjson",
+          "displayName": "Raw JSON",
+          "type": "Memo",
+          "description": "Dữ liệu Sales Demo: Raw JSON"
+        },
+        {
+          "schemaName": "sdp_recordkey",
+          "displayName": "Record Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Record Key"
+        },
+        {
+          "schemaName": "sdp_rownumber",
+          "displayName": "Row Number",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Row Number"
+        }
+      ]
+    },
+    {
+      "schemaName": "sdp_salesgold",
+      "displayName": "Dữ liệu Vàng",
+      "pluralName": "Dữ liệu Vàng",
+      "existing": true,
+      "description": "Tái sử dụng bảng Sales Demo đã có: Dữ liệu Vàng",
+      "primaryAttribute": {
+        "schemaName": "sdp_name",
+        "displayName": "Tên"
+      },
+      "columns": [
+        {
+          "schemaName": "sdp_batchkey",
+          "displayName": "Batch Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Batch Key"
+        },
+        {
+          "schemaName": "sdp_cost",
+          "displayName": "Cost",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Cost"
+        },
+        {
+          "schemaName": "sdp_currency",
+          "displayName": "Currency",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Currency"
+        },
+        {
+          "schemaName": "sdp_customercode",
+          "displayName": "Customer Code",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Customer Code"
+        },
+        {
+          "schemaName": "sdp_customername",
+          "displayName": "Customer Name",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Customer Name"
+        },
+        {
+          "schemaName": "sdp_discountamount",
+          "displayName": "Discount Amount",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Discount Amount"
+        },
+        {
+          "schemaName": "sdp_grossmarginpct",
+          "displayName": "Gross Margin Percent",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Gross Margin Percent"
+        },
+        {
+          "schemaName": "sdp_grossprofit",
+          "displayName": "Gross Profit",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Gross Profit"
+        },
+        {
+          "schemaName": "sdp_grosssales",
+          "displayName": "Gross Sales",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Gross Sales"
+        },
+        {
+          "schemaName": "sdp_month",
+          "displayName": "Month",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Month"
+        },
+        {
+          "schemaName": "sdp_netsales",
+          "displayName": "Net Sales",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Net Sales"
+        },
+        {
+          "schemaName": "sdp_orderdate",
+          "displayName": "Order Date",
+          "type": "DateTime",
+          "description": "Dữ liệu Sales Demo: Order Date"
+        },
+        {
+          "schemaName": "sdp_orderid",
+          "displayName": "Order ID",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Order ID"
+        },
+        {
+          "schemaName": "sdp_productcode",
+          "displayName": "Product Code",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Product Code"
+        },
+        {
+          "schemaName": "sdp_productname",
+          "displayName": "Product Name",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Product Name"
+        },
+        {
+          "schemaName": "sdp_recordkey",
+          "displayName": "Record Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Record Key"
+        },
+        {
+          "schemaName": "sdp_reportstatus",
+          "displayName": "Report Status",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Report Status"
+        },
+        {
+          "schemaName": "sdp_salescategory",
+          "displayName": "Sales Category",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Sales Category"
+        },
+        {
+          "schemaName": "sdp_year",
+          "displayName": "Year",
+          "type": "Integer",
+          "description": "Dữ liệu Sales Demo: Year"
+        }
+      ]
+    },
+    {
+      "schemaName": "sdp_salessilver",
+      "displayName": "Dữ liệu Bạc",
+      "pluralName": "Dữ liệu Bạc",
+      "existing": true,
+      "description": "Tái sử dụng bảng Sales Demo đã có: Dữ liệu Bạc",
+      "primaryAttribute": {
+        "schemaName": "sdp_name",
+        "displayName": "Tên"
+      },
+      "columns": [
+        {
+          "schemaName": "sdp_batchkey",
+          "displayName": "Batch Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Batch Key"
+        },
+        {
+          "schemaName": "sdp_currency",
+          "displayName": "Currency",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Currency"
+        },
+        {
+          "schemaName": "sdp_customercode",
+          "displayName": "Customer Code",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Customer Code"
+        },
+        {
+          "schemaName": "sdp_customername",
+          "displayName": "Customer Name",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Customer Name"
+        },
+        {
+          "schemaName": "sdp_dataqualitymessage",
+          "displayName": "Data Quality Message",
+          "type": "Memo",
+          "description": "Dữ liệu Sales Demo: Data Quality Message"
+        },
+        {
+          "schemaName": "sdp_dataqualitystatus",
+          "displayName": "Data Quality Status",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Data Quality Status"
+        },
+        {
+          "schemaName": "sdp_discountamount",
+          "displayName": "Discount Amount",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Discount Amount"
+        },
+        {
+          "schemaName": "sdp_discountpct",
+          "displayName": "Discount Percent",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Discount Percent"
+        },
+        {
+          "schemaName": "sdp_grossamount",
+          "displayName": "Gross Amount",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Gross Amount"
+        },
+        {
+          "schemaName": "sdp_netamount",
+          "displayName": "Net Amount",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Net Amount"
+        },
+        {
+          "schemaName": "sdp_orderdate",
+          "displayName": "Order Date",
+          "type": "DateTime",
+          "description": "Dữ liệu Sales Demo: Order Date"
+        },
+        {
+          "schemaName": "sdp_orderid",
+          "displayName": "Order ID",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Order ID"
+        },
+        {
+          "schemaName": "sdp_productcode",
+          "displayName": "Product Code",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Product Code"
+        },
+        {
+          "schemaName": "sdp_productname",
+          "displayName": "Product Name",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Product Name"
+        },
+        {
+          "schemaName": "sdp_quantity",
+          "displayName": "Quantity",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Quantity"
+        },
+        {
+          "schemaName": "sdp_recordkey",
+          "displayName": "Record Key",
+          "type": "Text",
+          "description": "Dữ liệu Sales Demo: Record Key"
+        },
+        {
+          "schemaName": "sdp_unitprice",
+          "displayName": "Unit Price",
+          "type": "Decimal",
+          "description": "Dữ liệu Sales Demo: Unit Price"
+        }
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "entity": "sdp_pipelinebatch",
+      "name": "SDP Demo - Lô dữ liệu",
+      "type": "main",
+      "layout": "explicit",
+      "description": "Xem chi tiết và đối chiếu dữ liệu: Lô dữ liệu",
+      "tabs": [
+        {
+          "label": "Lô dữ liệu",
+          "sections": [
+            {
+              "label": "Gửi dữ liệu",
+              "columns": 1,
+              "fields": [
+                "sdp_name",
+                "sdp_sourceurl",
+                "sdp_status"
+              ]
+            },
+            {
+              "label": "Kết quả xử lý",
+              "columns": 2,
+              "fields": [
+                "sdp_bronzecount",
+                "sdp_silvercount",
+                "sdp_goldcount",
+                "sdp_errorcount"
+              ]
+            },
+            {
+              "label": "Tra cứu lần chạy",
+              "columns": 2,
+              "fields": [
+                "sdp_batchkey",
+                "sdp_runkey",
+                "sdp_startedon",
+                "sdp_processedon"
+              ]
+            }
+          ]
+        }
+      ],
+      "fieldOptions": {
+        "sdp_batchkey": {
+          "readOnly": true
+        },
+        "sdp_bronzecount": {
+          "readOnly": true
+        },
+        "sdp_silvercount": {
+          "readOnly": true
+        },
+        "sdp_goldcount": {
+          "readOnly": true
+        },
+        "sdp_errorcount": {
+          "readOnly": true
+        },
+        "sdp_startedon": {
+          "readOnly": true
+        },
+        "sdp_processedon": {
+          "readOnly": true
+        }
+      },
+      "events": [
+        {
+          "event": "onload",
+          "library": "sdp_/scripts/sales-demo-form.js",
+          "function": "SalesDemo.onLoad"
+        },
+        {
+          "event": "onchange",
+          "attribute": "sdp_sourceurl",
+          "library": "sdp_/scripts/sales-demo-form.js",
+          "function": "SalesDemo.onSourceUrlChange"
+        }
+      ]
+    },
+    {
+      "entity": "sdp_pipelineerror",
+      "name": "SDP Demo - Lỗi xử lý",
+      "type": "main",
+      "layout": "auto",
+      "description": "Xem chi tiết và đối chiếu dữ liệu: Lỗi xử lý"
+    },
+    {
+      "entity": "sdp_salesbronze",
+      "name": "SDP Demo - Dữ liệu Đồng",
+      "type": "main",
+      "layout": "auto",
+      "description": "Xem chi tiết và đối chiếu dữ liệu: Dữ liệu Đồng"
+    },
+    {
+      "entity": "sdp_salesgold",
+      "name": "SDP Demo - Dữ liệu Vàng",
+      "type": "main",
+      "layout": "auto",
+      "description": "Xem chi tiết và đối chiếu dữ liệu: Dữ liệu Vàng"
+    },
+    {
+      "entity": "sdp_salessilver",
+      "name": "SDP Demo - Dữ liệu Bạc",
+      "type": "main",
+      "layout": "auto",
+      "description": "Xem chi tiết và đối chiếu dữ liệu: Dữ liệu Bạc"
+    }
+  ],
+  "views": [
+    {
+      "entity": "sdp_pipelinebatch",
+      "name": "SDP Demo - Lô dữ liệu",
+      "columns": [
+        "sdp_name",
+        "sdp_status",
+        "sdp_batchkey",
+        "sdp_bronzecount",
+        "sdp_silvercount",
+        "sdp_goldcount",
+        "sdp_errorcount"
+      ],
+      "activeOnly": true,
+      "description": "Danh sách phục vụ vận hành: Lô dữ liệu"
+    },
+    {
+      "entity": "sdp_pipelineerror",
+      "name": "SDP Demo - Lỗi xử lý",
+      "columns": [
+        "sdp_name",
+        "sdp_batchkey",
+        "sdp_layer",
+        "sdp_errortype",
+        "sdp_errormessage"
+      ],
+      "activeOnly": true,
+      "description": "Danh sách phục vụ vận hành: Lỗi xử lý"
+    },
+    {
+      "entity": "sdp_salesbronze",
+      "name": "SDP Demo - Dữ liệu Đồng",
+      "columns": [
+        "sdp_name",
+        "sdp_batchkey",
+        "sdp_rownumber",
+        "sdp_orderid",
+        "sdp_loadstatus"
+      ],
+      "activeOnly": true,
+      "description": "Danh sách phục vụ vận hành: Dữ liệu Đồng"
+    },
+    {
+      "entity": "sdp_salesgold",
+      "name": "SDP Demo - Dữ liệu Vàng",
+      "columns": [
+        "sdp_name",
+        "sdp_batchkey",
+        "sdp_orderid",
+        "sdp_netsales",
+        "sdp_grossprofit",
+        "sdp_reportstatus"
+      ],
+      "activeOnly": true,
+      "description": "Danh sách phục vụ vận hành: Dữ liệu Vàng"
+    },
+    {
+      "entity": "sdp_salessilver",
+      "name": "SDP Demo - Dữ liệu Bạc",
+      "columns": [
+        "sdp_name",
+        "sdp_batchkey",
+        "sdp_orderid",
+        "sdp_quantity",
+        "sdp_netamount",
+        "sdp_dataqualitystatus"
+      ],
+      "activeOnly": true,
+      "description": "Danh sách phục vụ vận hành: Dữ liệu Bạc"
+    }
+  ],
+  "relationships": [],
+  "charts": [],
+  "pages": [],
+  "webResources": [
+    {
+      "name": "sdp_/scripts/sales-demo-form.js",
+      "displayName": "Sales Demo form",
+      "type": "js",
+      "contentPath": "webresources/sales-demo-form.js",
+      "description": "Kiểm tra URL, sinh key và mở trang theo dõi đúng batch."
+    }
+  ],
+  "commands": [
+    {
+      "entity": "sdp_pipelinebatch",
+      "label": "Theo dõi batch",
+      "location": "MainTab",
+      "library": "sdp_/scripts/sales-demo-form.js",
+      "function": "SalesDemo.openBatchConsole"
+    }
+  ],
+  "ai": {
+    "appFeatures": {
+      "formFill": false,
+      "nlSearch": false,
+      "nlChart": false,
+      "m365": false
+    },
+    "summaries": {
+      "default": "off"
+    }
+  },
+  "appShell": {
+    "areas": [
+      {
+        "label": "Sales Demo",
+        "groups": [
+          {
+            "label": "Vận hành",
+            "subAreas": [
+              {
+                "entity": "sdp_pipelinebatch",
+                "title": "Lô dữ liệu"
+              },
+              {
+                "entity": "sdp_pipelineerror",
+                "title": "Lỗi xử lý"
+              }
+            ]
+          },
+          {
+            "label": "Ba tầng dữ liệu",
+            "subAreas": [
+              {
+                "entity": "sdp_salesbronze",
+                "title": "Dữ liệu Đồng"
+              },
+              {
+                "entity": "sdp_salessilver",
+                "title": "Dữ liệu Bạc"
+              },
+              {
+                "entity": "sdp_salesgold",
+                "title": "Dữ liệu Vàng"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "personas": []
+}
